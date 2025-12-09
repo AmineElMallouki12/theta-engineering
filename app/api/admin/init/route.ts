@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createAdmin, getAdminByUsername } from '@/lib/auth'
 
+// Prevent Next.js from trying to analyze this route during build
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
+
 /**
  * One-time admin initialization endpoint
  * Call this once to create the first admin user
