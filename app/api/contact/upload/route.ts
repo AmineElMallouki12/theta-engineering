@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { writeFile, mkdir } from 'fs/promises'
-import { join } from 'path'
-import { existsSync } from 'fs'
+import clientPromise from '@/lib/mongodb'
+import { GridFSBucket, ObjectId } from 'mongodb'
+
+// Prevent Next.js from analyzing this route during build
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
 
 export async function POST(request: NextRequest) {
   try {
@@ -41,32 +44,55 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // Connect to MongoDB
+    const client = await clientPromise
+    const db = client.db()
+
+    // Create GridFS bucket for contact documents
+    const bucket = new GridFSBucket(db, {
+      bucketName: 'contact-documents',
+    })
+
+    // Convert file to buffer
     const bytes = await file.arrayBuffer()
     const buffer = Buffer.from(bytes)
 
-    // Create uploads directory if it doesn't exist
-    const uploadsDir = join(process.cwd(), 'public', 'uploads', 'contact')
-    if (!existsSync(uploadsDir)) {
-      await mkdir(uploadsDir, { recursive: true })
-    }
-
-    // Generate unique filename
+    // Generate unique filename with original name preserved
     const timestamp = Date.now()
     const randomStr = Math.random().toString(36).substring(2, 9)
-    const filename = `${timestamp}-${randomStr}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`
-    const filepath = join(uploadsDir, filename)
+    const sanitizedOriginalName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_')
+    const filename = `${timestamp}-${randomStr}-${sanitizedOriginalName}`
 
-    await writeFile(filepath, buffer)
+    // Upload to GridFS
+    const uploadStream = bucket.openUploadStream(filename, {
+      contentType: file.type || 'application/octet-stream',
+      metadata: {
+        originalName: file.name,
+        uploadedAt: new Date(),
+      },
+    })
 
-    // Return the public URL
-    const url = `/uploads/contact/${filename}`
-    return NextResponse.json({ url })
-  } catch (error) {
+    // Return a promise that resolves when upload is complete
+    const fileId = await new Promise<ObjectId>((resolve, reject) => {
+      uploadStream.on('finish', () => {
+        resolve(uploadStream.id as ObjectId)
+      })
+      uploadStream.on('error', reject)
+      uploadStream.end(buffer)
+    })
+
+    // Return the URL to access the document and the original filename
+    const url = `/api/documents/${fileId.toString()}`
+    return NextResponse.json({ 
+      url,
+      filename: file.name, // Include original filename for display
+      id: fileId.toString()
+    })
+  } catch (error: any) {
     console.error('Error uploading file:', error)
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: error.message || 'Internal server error' },
       { status: 500 }
     )
   }
 }
-

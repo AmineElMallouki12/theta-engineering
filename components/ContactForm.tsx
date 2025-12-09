@@ -121,7 +121,12 @@ export default function ContactForm({ type = 'contact', locale }: ContactFormPro
 
         if (response.ok) {
           const result = await response.json()
-          uploadedUrls.push(result.url)
+          // Store both URL and filename for better display in admin panel
+          uploadedUrls.push({
+            url: result.url,
+            filename: result.filename || file.name,
+            id: result.id
+          })
         } else {
           console.error(`Failed to upload file ${file.name}`)
         }

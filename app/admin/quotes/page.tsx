@@ -192,17 +192,33 @@ export default function AdminQuotesPage() {
                           </p>
                         )}
                         {(quote as any).documents && (quote as any).documents.length > 0 && (
-                          <p className="text-sm text-gray-600">
-                            <strong>Documents:</strong>{' '}
-                            {(quote as any).documents.map((doc: string, idx: number) => (
-                              <span key={idx}>
-                                <a href={doc} target="_blank" rel="noopener noreferrer" className="text-primary-900 hover:underline">
-                                  Document {idx + 1}
-                                </a>
-                                {idx < (quote as any).documents.length - 1 && ', '}
-                              </span>
-                            ))}
-                          </p>
+                          <div className="mt-2">
+                            <strong className="text-sm text-gray-700 block mb-2">Documents ({((quote as any).documents.length)}):</strong>
+                            <div className="flex flex-wrap gap-2">
+                              {(quote as any).documents.map((doc: string | { url: string; filename?: string; id?: string }, idx: number) => {
+                                // Handle both old format (string URL) and new format (object with url and filename)
+                                const docUrl = typeof doc === 'string' ? doc : doc.url || doc.id
+                                const docName = typeof doc === 'string' 
+                                  ? `Document ${idx + 1}` 
+                                  : (doc.filename || `Document ${idx + 1}`)
+                                
+                                return (
+                                  <a
+                                    key={idx}
+                                    href={docUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-1 px-3 py-1.5 text-sm bg-primary-50 text-primary-900 rounded-lg hover:bg-primary-100 transition-colors border border-primary-200"
+                                  >
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                                    </svg>
+                                    {docName}
+                                  </a>
+                                )
+                              })}
+                            </div>
+                          </div>
                         )}
                         <p className="text-sm text-gray-500 mt-2">
                           <strong>{t('createdAt')}:</strong>{' '}
