@@ -18,18 +18,25 @@ import { MongoClient } from 'mongodb'
 // Check for MONGODB_URI - only throw error at runtime, not during build
 const uri: string | undefined = process.env.MONGODB_URI
 
-if (!uri) {
-  // Don't throw during build - let it fail gracefully at runtime
-  if (typeof window === 'undefined' && process.env.NODE_ENV !== 'production') {
-    console.warn('⚠️  MONGODB_URI is not set. Please add it to your environment variables.')
-  }
-}
+// During build time, create a dummy promise that won't fail
+const isBuildTime = process.env.NEXT_PHASE === 'phase-production-build' || 
+                    process.env.NEXT_PHASE === 'phase-development-build' ||
+                    !process.env.MONGODB_URI
+
 let client: MongoClient
 let clientPromise: Promise<MongoClient>
 
-if (!uri) {
-  // Create a rejected promise that will fail when actually used
-  clientPromise = Promise.reject(new Error('MONGODB_URI is not set. Please add it to your environment variables in Vercel.'))
+if (isBuildTime || !uri) {
+  // During build or if URI is missing, create a promise that will fail gracefully at runtime
+  clientPromise = new Promise((resolve, reject) => {
+    // Don't actually connect during build
+    if (isBuildTime) {
+      // Return a dummy client that will fail when used
+      resolve({} as MongoClient)
+    } else {
+      reject(new Error('MONGODB_URI is not set. Please add it to your environment variables in Vercel.'))
+    }
+  })
 } else if (process.env.NODE_ENV === 'development') {
   // In development mode, use a global variable so that the value
   // is preserved across module reloads caused by HMR (Hot Module Replacement).
