@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createAdmin, getAdminByEmail } from '@/lib/auth'
+import { createAdmin, getAdminByUsername } from '@/lib/auth'
 
 /**
  * One-time admin initialization endpoint
@@ -7,7 +7,7 @@ import { createAdmin, getAdminByEmail } from '@/lib/auth'
  * DELETE this file after creating your admin account for security
  * 
  * Usage: POST /api/admin/init
- * Body: { email: "admin@example.com", password: "yourpassword" }
+ * Body: { username: "admin", password: "yourpassword", email?: "admin@example.com" }
  */
 export async function POST(request: NextRequest) {
   try {
@@ -19,16 +19,16 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const { email, password, secret } = await request.json()
+    const { username, password, email, secret } = await request.json()
 
     // Check secret if in production
     if (process.env.NODE_ENV === 'production' && secret !== process.env.ADMIN_INIT_SECRET) {
       return NextResponse.json({ error: 'Invalid secret' }, { status: 403 })
     }
 
-    if (!email || !password) {
+    if (!username || !password) {
       return NextResponse.json(
-        { error: 'Email and password are required' },
+        { error: 'Username and password are required' },
         { status: 400 }
       )
     }
@@ -41,16 +41,16 @@ export async function POST(request: NextRequest) {
     }
 
     // Check if admin already exists
-    const existingAdmin = await getAdminByEmail(email)
+    const existingAdmin = await getAdminByUsername(username)
     if (existingAdmin) {
       return NextResponse.json(
-        { error: 'Admin with this email already exists' },
+        { error: 'Admin with this username already exists' },
         { status: 400 }
       )
     }
 
     // Create admin
-    await createAdmin(email, password)
+    await createAdmin(username, password, email)
 
     return NextResponse.json({
       success: true,
