@@ -184,7 +184,7 @@ export default function ContactForm({ type = 'contact', locale }: ContactFormPro
       }
 
       // Upload files first
-      let documentUrls: string[] = []
+      let documentUrls: Array<{ url: string; filename: string; id: string }> = []
       if (uploadedFiles.length > 0) {
         documentUrls = await uploadFiles(uploadedFiles)
       }
