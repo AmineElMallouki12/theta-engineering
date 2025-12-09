@@ -1,31 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { requireAuth } from '@/lib/middleware-auth'
-import { v2 as cloudinary } from 'cloudinary'
+import clientPromise from '@/lib/mongodb'
+import { GridFSBucket, ObjectId } from 'mongodb'
 
 // Prevent Next.js from analyzing this route during build
 export const dynamic = 'force-dynamic'
 export const runtime = 'nodejs'
 
-// Configure Cloudinary
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-})
-
 export async function POST(request: NextRequest) {
   try {
     await requireAuth(request)
-
-    // Check if Cloudinary is configured
-    if (!process.env.CLOUDINARY_CLOUD_NAME || 
-        !process.env.CLOUDINARY_API_KEY || 
-        !process.env.CLOUDINARY_API_SECRET) {
-      return NextResponse.json(
-        { error: 'Cloudinary is not configured. Please add CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_API_SECRET to your environment variables.' },
-        { status: 500 }
-      )
-    }
 
     const formData = await request.formData()
     const file = formData.get('file') as File
@@ -51,34 +35,44 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // Connect to MongoDB
+    const client = await clientPromise
+    const db = client.db()
+
+    // Create GridFS bucket
+    const bucket = new GridFSBucket(db, {
+      bucketName: 'project-images',
+    })
+
     // Convert file to buffer
     const bytes = await file.arrayBuffer()
     const buffer = Buffer.from(bytes)
 
-    // Convert buffer to base64 data URL for Cloudinary
-    const base64 = buffer.toString('base64')
-    const dataURI = `data:${file.type};base64,${base64}`
+    // Generate unique filename
+    const timestamp = Date.now()
+    const filename = `${timestamp}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`
 
-    // Upload to Cloudinary
-    const result = await new Promise((resolve, reject) => {
-      cloudinary.uploader.upload(
-        dataURI,
-        {
-          folder: 'theta-engineering/projects',
-          resource_type: 'image',
-          transformation: [
-            { width: 1920, height: 1080, crop: 'limit', quality: 'auto' },
-          ],
-        },
-        (error, result) => {
-          if (error) reject(error)
-          else resolve(result)
-        }
-      )
-    }) as any
+    // Upload to GridFS
+    const uploadStream = bucket.openUploadStream(filename, {
+      contentType: file.type,
+      metadata: {
+        originalName: file.name,
+        uploadedAt: new Date(),
+      },
+    })
 
-    // Return the secure URL
-    return NextResponse.json({ url: result.secure_url })
+    // Return a promise that resolves when upload is complete
+    const fileId = await new Promise<ObjectId>((resolve, reject) => {
+      uploadStream.on('finish', () => {
+        resolve(uploadStream.id as ObjectId)
+      })
+      uploadStream.on('error', reject)
+      uploadStream.end(buffer)
+    })
+
+    // Return the URL to access the image
+    const url = `/api/images/${fileId.toString()}`
+    return NextResponse.json({ url })
   } catch (error: any) {
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
