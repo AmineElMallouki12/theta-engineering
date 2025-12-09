@@ -83,6 +83,9 @@ export async function POST(request: NextRequest) {
       maxAge: 60 * 60 * 24 * 7, // 7 days
       path: '/',
     })
+    
+    // Also set a response header for debugging
+    response.headers.set('X-Login-Status', 'success')
 
     console.log('[Login API] Login completed successfully')
     return response
