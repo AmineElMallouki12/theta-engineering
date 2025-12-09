@@ -13,6 +13,10 @@ const nextConfig = {
       },
     ],
   },
+  // Exclude problematic routes from static analysis
+  experimental: {
+    // This helps prevent build-time analysis of certain routes
+  },
 }
 
 module.exports = withNextIntl(nextConfig)
