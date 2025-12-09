@@ -4,6 +4,10 @@ import clientPromise from '@/lib/mongodb'
 import { ObjectId } from 'mongodb'
 import { Project } from '@/lib/models'
 
+// Prevent Next.js from analyzing this route during build
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
+
 export async function PUT(
   request: NextRequest,
   { params }: { params: { id: string } }

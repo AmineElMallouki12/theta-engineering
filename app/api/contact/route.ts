@@ -3,6 +3,10 @@ import clientPromise from '@/lib/mongodb'
 import { Quote } from '@/lib/models'
 import nodemailer from 'nodemailer'
 
+// Prevent Next.js from analyzing this route during build
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
+
 // Simple spam protection - check for common spam patterns
 function isSpam(data: any): boolean {
   const spamPatterns = [

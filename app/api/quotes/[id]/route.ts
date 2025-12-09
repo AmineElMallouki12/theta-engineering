@@ -3,6 +3,10 @@ import { requireAuth } from '@/lib/middleware-auth'
 import clientPromise from '@/lib/mongodb'
 import { ObjectId } from 'mongodb'
 
+// Prevent Next.js from analyzing this route during build
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
+
 export async function PATCH(
   request: NextRequest,
   { params }: { params: { id: string } }
