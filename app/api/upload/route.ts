@@ -1,12 +1,31 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { requireAuth } from '@/lib/middleware-auth'
-import { writeFile, mkdir } from 'fs/promises'
-import { join } from 'path'
-import { existsSync } from 'fs'
+import { v2 as cloudinary } from 'cloudinary'
+
+// Prevent Next.js from analyzing this route during build
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
+
+// Configure Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+})
 
 export async function POST(request: NextRequest) {
   try {
     await requireAuth(request)
+
+    // Check if Cloudinary is configured
+    if (!process.env.CLOUDINARY_CLOUD_NAME || 
+        !process.env.CLOUDINARY_API_KEY || 
+        !process.env.CLOUDINARY_API_SECRET) {
+      return NextResponse.json(
+        { error: 'Cloudinary is not configured. Please add CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_API_SECRET to your environment variables.' },
+        { status: 500 }
+      )
+    }
 
     const formData = await request.formData()
     const file = formData.get('file') as File
@@ -32,34 +51,42 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // Convert file to buffer
     const bytes = await file.arrayBuffer()
     const buffer = Buffer.from(bytes)
 
-    // Create uploads directory if it doesn't exist
-    const uploadsDir = join(process.cwd(), 'public', 'uploads')
-    if (!existsSync(uploadsDir)) {
-      await mkdir(uploadsDir, { recursive: true })
-    }
+    // Convert buffer to base64 data URL for Cloudinary
+    const base64 = buffer.toString('base64')
+    const dataURI = `data:${file.type};base64,${base64}`
 
-    // Generate unique filename
-    const timestamp = Date.now()
-    const filename = `${timestamp}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`
-    const filepath = join(uploadsDir, filename)
+    // Upload to Cloudinary
+    const result = await new Promise((resolve, reject) => {
+      cloudinary.uploader.upload(
+        dataURI,
+        {
+          folder: 'theta-engineering/projects',
+          resource_type: 'image',
+          transformation: [
+            { width: 1920, height: 1080, crop: 'limit', quality: 'auto' },
+          ],
+        },
+        (error, result) => {
+          if (error) reject(error)
+          else resolve(result)
+        }
+      )
+    }) as any
 
-    await writeFile(filepath, buffer)
-
-    // Return the public URL
-    const url = `/uploads/${filename}`
-    return NextResponse.json({ url })
+    // Return the secure URL
+    return NextResponse.json({ url: result.secure_url })
   } catch (error: any) {
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
     console.error('Error uploading file:', error)
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: error.message || 'Internal server error' },
       { status: 500 }
     )
   }
 }
-
