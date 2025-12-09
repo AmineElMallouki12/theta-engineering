@@ -99,8 +99,8 @@ export default function ContactForm({ type = 'contact', locale }: ContactFormPro
     setUploadedFiles(prev => prev.filter((_, i) => i !== index))
   }
 
-  const uploadFiles = async (files: File[]): Promise<string[]> => {
-    const uploadedUrls: string[] = []
+  const uploadFiles = async (files: File[]): Promise<Array<{ url: string; filename: string; id: string }>> => {
+    const uploadedUrls: Array<{ url: string; filename: string; id: string }> = []
     
     for (let i = 0; i < files.length; i++) {
       const file = files[i]
