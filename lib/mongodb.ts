@@ -15,15 +15,22 @@ import { MongoClient } from 'mongodb'
  * ```
  */
 
-if (!process.env.MONGODB_URI) {
-  throw new Error('Please add your Mongo URI to .env.local')
-}
+// Check for MONGODB_URI - only throw error at runtime, not during build
+const uri: string | undefined = process.env.MONGODB_URI
 
-const uri: string = process.env.MONGODB_URI
+if (!uri) {
+  // Don't throw during build - let it fail gracefully at runtime
+  if (typeof window === 'undefined' && process.env.NODE_ENV !== 'production') {
+    console.warn('⚠️  MONGODB_URI is not set. Please add it to your environment variables.')
+  }
+}
 let client: MongoClient
 let clientPromise: Promise<MongoClient>
 
-if (process.env.NODE_ENV === 'development') {
+if (!uri) {
+  // Create a rejected promise that will fail when actually used
+  clientPromise = Promise.reject(new Error('MONGODB_URI is not set. Please add it to your environment variables in Vercel.'))
+} else if (process.env.NODE_ENV === 'development') {
   // In development mode, use a global variable so that the value
   // is preserved across module reloads caused by HMR (Hot Module Replacement).
   // This prevents creating multiple connections during development.
