@@ -2,6 +2,10 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getAdminByUsername, verifyPassword, updateAdminPassword } from '@/lib/auth'
 import { verifyToken } from '@/lib/auth'
 
+// Prevent Next.js from analyzing this route during build
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
+
 export async function POST(request: NextRequest) {
   try {
     const token = request.cookies.get('admin_token')?.value
