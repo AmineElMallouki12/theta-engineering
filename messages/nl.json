@@ -46,7 +46,21 @@
     "step4Desc": "Kwaliteitscontrole en tijdige projectafronding",
     "ctaTitle": "Klaar om te beginnen?",
     "ctaDesc": "Neem vandaag nog contact met ons op en ontdek hoe we uw project kunnen helpen",
-    "ctaButton": "Start Nu"
+    "ctaButton": "Start Nu",
+    "services": {
+      "service1": {
+        "title": "Constructief ontwerp en berekeningen"
+      },
+      "service2": {
+        "title": "Beoordeling van de constructieve veiligheid"
+      },
+      "service3": {
+        "title": "Projectmanagement"
+      },
+      "service4": {
+        "title": "Inspectie en constructief advies"
+      }
+    }
   },
   "about": {
     "title": "Over Ons",

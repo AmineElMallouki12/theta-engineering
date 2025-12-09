@@ -46,7 +46,21 @@
     "step4Desc": "Quality assurance and timely project completion",
     "ctaTitle": "Ready to Get Started?",
     "ctaDesc": "Contact us today and discover how we can help with your project",
-    "ctaButton": "Get Started"
+    "ctaButton": "Get Started",
+    "services": {
+      "service1": {
+        "title": "Structural design and calculations"
+      },
+      "service2": {
+        "title": "Assessment of structural safety"
+      },
+      "service3": {
+        "title": "Project management"
+      },
+      "service4": {
+        "title": "Inspection & structural advice"
+      }
+    }
   },
   "about": {
     "title": "About Us",

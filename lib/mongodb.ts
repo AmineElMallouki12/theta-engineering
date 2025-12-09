@@ -21,6 +21,12 @@ const isBuildTime = process.env.NEXT_PHASE === 'phase-production-build' ||
 
 const uri: string | undefined = process.env.MONGODB_URI
 
+// Validate URI format if provided
+if (uri && !uri.trim().startsWith('mongodb://') && !uri.trim().startsWith('mongodb+srv://')) {
+  console.error('❌ Invalid MONGODB_URI format. Must start with "mongodb://" or "mongodb+srv://"')
+  console.error('Current value:', uri.substring(0, 20) + '...')
+}
+
 let client: MongoClient
 let clientPromise: Promise<MongoClient>
 
@@ -31,9 +37,16 @@ if (isBuildTime) {
     db: () => ({ collection: () => ({}) }),
     close: () => Promise.resolve(),
   } as unknown as MongoClient)
-} else if (!uri) {
+} else if (!uri || !uri.trim()) {
   // No URI provided - will fail at runtime
-  clientPromise = Promise.reject(new Error('MONGODB_URI is not set. Please add it to your environment variables in Vercel.'))
+  const errorMsg = 'MONGODB_URI is not set or is empty. Please add it to your environment variables in Vercel.'
+  console.error('❌', errorMsg)
+  clientPromise = Promise.reject(new Error(errorMsg))
+} else if (!uri.trim().startsWith('mongodb://') && !uri.trim().startsWith('mongodb+srv://')) {
+  // Invalid URI format
+  const errorMsg = `Invalid MONGODB_URI format. Must start with "mongodb://" or "mongodb+srv://". Current value starts with: ${uri.trim().substring(0, 20)}`
+  console.error('❌', errorMsg)
+  clientPromise = Promise.reject(new Error(errorMsg))
 } else if (process.env.NODE_ENV === 'development') {
   // In development mode, use a global variable so that the value
   // is preserved across module reloads caused by HMR (Hot Module Replacement).
