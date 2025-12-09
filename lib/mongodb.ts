@@ -19,7 +19,7 @@ import { MongoClient } from 'mongodb'
 // This prevents build-time connection attempts
 
 let client: MongoClient
-let clientPromise: Promise<MongoClient>
+let clientPromise: Promise<MongoClient> | null = null
 
 function getClientPromise(): Promise<MongoClient> {
   // Check if we're in build phase
@@ -62,7 +62,18 @@ function getClientPromise(): Promise<MongoClient> {
   return clientPromise
 }
 
-// Export a getter function instead of the promise directly
-// This ensures the connection is only attempted when actually called
-export default getClientPromise()
+// Create a proxy promise that only connects when actually awaited
+// This prevents connection attempts during build
+const proxyPromise = new Proxy({} as Promise<MongoClient>, {
+  get(target, prop) {
+    const promise = getClientPromise()
+    return (promise as any)[prop]
+  },
+  apply(target, thisArg, argumentsList) {
+    const promise = getClientPromise()
+    return (promise as any).then(...argumentsList)
+  }
+})
+
+export default proxyPromise as Promise<MongoClient>
 
