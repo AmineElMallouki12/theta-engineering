@@ -1,5 +1,9 @@
 ﻿import { NextResponse } from 'next/server'
 
+// Prevent Next.js from analyzing this route during build
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
+
 // This route is disabled - admin user already created
 export async function GET() {
   return NextResponse.json(
