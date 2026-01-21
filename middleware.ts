@@ -31,18 +31,6 @@ export default function middleware(request: NextRequest) {
     return NextResponse.next()
   }
   
-  // Exclude reset-password route from locale routing
-  if (pathname.startsWith('/reset-password') || pathname.startsWith('/nl/reset-password') || pathname.startsWith('/en/reset-password')) {
-    // If accessing /nl/reset-password or /en/reset-password, redirect to /reset-password
-    if (pathname.startsWith('/nl/reset-password') || pathname.startsWith('/en/reset-password')) {
-      const newPath = pathname.replace(/^\/(nl|en)\/reset-password/, '/reset-password')
-      const url = request.nextUrl.clone()
-      url.pathname = newPath
-      return NextResponse.redirect(url)
-    }
-    return NextResponse.next()
-  }
-  
   // Exclude API routes
   if (pathname.startsWith('/api')) {
     return NextResponse.next()

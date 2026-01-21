@@ -10,7 +10,6 @@
     "lint": "next lint",
     "init-admin": "node scripts/init-admin.js",
     "generate-hash": "node scripts/generate-password-hash.js",
-    "reset-password": "node scripts/reset-admin-password.js",
     "migrate-to-atlas": "node scripts/migrate-to-atlas.js"
   },
   "dependencies": {
