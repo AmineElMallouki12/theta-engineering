@@ -149,7 +149,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-900 mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0000FF] mx-auto"></div>
           <p className="mt-4 text-gray-600">{t('verifyingAuth')}</p>
         </div>
       </div>
@@ -158,11 +158,11 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-primary-50">
-      <nav className="bg-white shadow-md border-b-2 border-primary-900 sticky top-0 z-50">
+      <nav className="bg-white shadow-md border-b-2 border-[#0000FF] sticky top-0 z-50">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-4 md:space-x-8">
-              <Link href="/admin/dashboard" className="text-lg md:text-xl font-bold text-primary-900 hover:text-primary-800 transition-colors">
+              <Link href="/admin/dashboard" className="text-lg md:text-xl font-bold text-[#0000FF] hover:text-[#0000FF] transition-colors">
                 Theta Admin
               </Link>
               <div className="hidden md:flex space-x-4">
@@ -172,8 +172,8 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                     href={item.href}
                     className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                       pathname === item.href
-                        ? 'bg-primary-900 text-white shadow-md'
-                        : 'text-gray-700 hover:bg-primary-100 hover:text-primary-900'
+                        ? 'bg-[#0000FF] text-white shadow-md'
+                        : 'text-gray-700 hover:bg-[#0000FF] hover:text-white'
                     }`}
                   >
                     {item.label}
@@ -185,7 +185,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
               <AdminLanguageSwitcher />
               <Link
                 href="/admin/quotes"
-                className="relative p-2 text-gray-700 hover:text-primary-900 transition-colors"
+                className="relative p-2 text-gray-700 hover:text-[#0000FF] transition-colors"
               >
                 <svg
                   className="h-5 w-5 md:h-6 md:w-6"
@@ -214,7 +214,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
               </button>
               <button
                 onClick={handleLogout}
-                className="hidden md:block px-4 py-2 text-sm font-medium text-white bg-primary-900 hover:bg-primary-800 rounded-lg transition-colors"
+                className="hidden md:block px-4 py-2 text-sm font-medium text-white bg-[#0000FF] hover:bg-[#0000FF] rounded-lg transition-colors"
               >
                 {t('logout')}
               </button>
@@ -230,8 +230,8 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                   onClick={() => setMobileMenuOpen(false)}
                   className={`block px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                     pathname === item.href
-                      ? 'bg-primary-900 text-white'
-                      : 'text-gray-700 hover:bg-primary-100 hover:text-primary-900'
+                      ? 'bg-[#0000FF] text-white'
+                      : 'text-gray-700 hover:bg-[#0000FF] hover:text-white'
                   }`}
                 >
                   {item.label}
@@ -242,7 +242,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                   handleLogout()
                   setMobileMenuOpen(false)
                 }}
-                className="block w-full text-left px-3 py-2 rounded-md text-sm font-medium text-white bg-primary-900 hover:bg-primary-800 transition-colors"
+                className="block w-full text-left px-3 py-2 rounded-md text-sm font-medium text-white bg-[#0000FF] hover:bg-[#0000FF] transition-colors"
               >
                 {t('logout')}
               </button>

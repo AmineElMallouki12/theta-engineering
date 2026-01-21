@@ -1,37 +1,21 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useMemo } from 'react'
 import { useTranslations } from 'next-intl'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import ReCaptcha, { ReCaptchaRef } from './ReCaptcha'
 
-const contactSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters'),
-  email: z.string().email('Invalid email address'),
-  phone: z.string().min(1, 'Phone number is required'),
-  clientType: z.enum(['organisatie', 'particulier']),
-  organizationName: z.string().optional(),
-  projectLocation: z.string().optional(),
-  projectType: z.enum(['constructief-ontwerp', 'beoordeling-veiligheid', 'projectmanagement', 'inspectie-advies']),
-  message: z.string().min(10, 'Message must be at least 10 characters'),
-  privacyAccepted: z.boolean().refine((val) => val === true, {
-    message: 'You must agree to the privacy statement',
-  }),
-  type: z.enum(['quote', 'contact']),
-}).refine((data) => {
-  // If clientType is 'organisatie', organizationName is required
-  if (data.clientType === 'organisatie' && !data.organizationName) {
-    return false
-  }
-  return true
-}, {
-  message: 'Organization name is required when Organization is selected',
-  path: ['organizationName'],
-})
-
-type ContactFormData = z.infer<typeof contactSchema>
+type ContactFormData = {
+  firstName: string
+  lastName: string
+  email: string
+  phone?: string
+  message: string
+  privacyAccepted: boolean
+  type: 'quote' | 'contact'
+}
 
 interface ContactFormProps {
   type?: 'quote' | 'contact'
@@ -40,6 +24,18 @@ interface ContactFormProps {
 
 export default function ContactForm({ type = 'contact', locale }: ContactFormProps) {
   const t = useTranslations('contact')
+  
+  const contactSchema = useMemo(() => z.object({
+    firstName: z.string().min(2, t('validation.firstNameMin') || 'First name must be at least 2 characters'),
+    lastName: z.string().min(2, t('validation.lastNameMin') || 'Last name must be at least 2 characters'),
+    email: z.string().email(t('validation.emailInvalid') || 'Invalid email address'),
+    phone: z.string().optional(),
+    message: z.string().min(10, t('validation.messageMin') || 'Message must be at least 10 characters'),
+    privacyAccepted: z.boolean().refine((val) => val === true, {
+      message: t('privacyAcceptRequired'),
+    }),
+    type: z.enum(['quote', 'contact']),
+  }), [t])
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([])
@@ -51,7 +47,6 @@ export default function ContactForm({ type = 'contact', locale }: ContactFormPro
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
     reset,
   } = useForm<ContactFormData>({
@@ -59,11 +54,8 @@ export default function ContactForm({ type = 'contact', locale }: ContactFormPro
     defaultValues: {
       type,
       privacyAccepted: false,
-      clientType: 'particulier',
     },
   })
-
-  const clientType = watch('clientType')
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || [])
@@ -196,6 +188,7 @@ export default function ContactForm({ type = 'contact', locale }: ContactFormPro
         },
         body: JSON.stringify({
           ...data,
+          name: `${data.firstName} ${data.lastName}`, // Combine for backend compatibility
           documents: documentUrls,
           recaptchaToken: token,
         }),
@@ -233,133 +226,86 @@ export default function ContactForm({ type = 'contact', locale }: ContactFormPro
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 animate-fade-in">
-      {/* Full Name */}
-      <div>
-        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-          {t('fullName')} *
-        </label>
-        <input
-          {...register('name')}
-          type="text"
-          id="name"
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-        />
-        {errors.name && (
-          <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
-        )}
-      </div>
-
-      {/* Email */}
-      <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-          {t('email')} *
-        </label>
-        <input
-          {...register('email')}
-          type="email"
-          id="email"
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-        />
-        {errors.email && (
-          <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
-        )}
-      </div>
-
-      {/* Phone */}
-      <div>
-        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-          {t('phone')} *
-        </label>
-        <input
-          {...register('phone')}
-          type="tel"
-          id="phone"
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-        />
-        {errors.phone && (
-          <p className="mt-1 text-sm text-red-600">{errors.phone.message}</p>
-        )}
-      </div>
-
-      {/* Client Type */}
-      <div>
-        <label htmlFor="clientType" className="block text-sm font-medium text-gray-700 mb-2">
-          {t('clientType')} *
-        </label>
-        <select
-          {...register('clientType')}
-          id="clientType"
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-        >
-          <option value="particulier">{t('clientTypeParticulier')}</option>
-          <option value="organisatie">{t('clientTypeOrganisatie')}</option>
-        </select>
-        {errors.clientType && (
-          <p className="mt-1 text-sm text-red-600">{errors.clientType.message}</p>
-        )}
-      </div>
-
-      {/* Organization Name - Conditional */}
-      {clientType === 'organisatie' && (
+      {/* First Name and Last Name - Side by Side */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* First Name */}
         <div>
-          <label htmlFor="organizationName" className="block text-sm font-medium text-gray-700 mb-2">
-            {t('organizationName')} *
+          <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
+            {t('firstName')}
           </label>
           <input
-            {...register('organizationName')}
+            {...register('firstName')}
             type="text"
-            id="organizationName"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+            id="firstName"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0000FF] focus:border-transparent"
           />
-          {errors.organizationName && (
-            <p className="mt-1 text-sm text-red-600">{errors.organizationName.message}</p>
+          {errors.firstName && (
+            <p className="mt-1 text-sm text-red-600">{errors.firstName.message}</p>
           )}
         </div>
-      )}
 
-      {/* Project Location */}
-      <div>
-        <label htmlFor="projectLocation" className="block text-sm font-medium text-gray-700 mb-2">
-          {t('projectLocation')}
-        </label>
-        <input
-          {...register('projectLocation')}
-          type="text"
-          id="projectLocation"
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-        />
+        {/* Last Name */}
+        <div>
+          <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
+            {t('lastName')}
+          </label>
+          <input
+            {...register('lastName')}
+            type="text"
+            id="lastName"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0000FF] focus:border-transparent"
+          />
+          {errors.lastName && (
+            <p className="mt-1 text-sm text-red-600">{errors.lastName.message}</p>
+          )}
+        </div>
       </div>
 
-      {/* Project Type */}
-      <div>
-        <label htmlFor="projectType" className="block text-sm font-medium text-gray-700 mb-2">
-          {t('projectType')} *
-        </label>
-        <select
-          {...register('projectType')}
-          id="projectType"
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-        >
-          <option value="constructief-ontwerp">{t('projectType1')}</option>
-          <option value="beoordeling-veiligheid">{t('projectType2')}</option>
-          <option value="projectmanagement">{t('projectType3')}</option>
-          <option value="inspectie-advies">{t('projectType4')}</option>
-        </select>
-        {errors.projectType && (
-          <p className="mt-1 text-sm text-red-600">{errors.projectType.message}</p>
-        )}
+      {/* Email and Phone - Side by Side */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Email */}
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+            {t('email')}
+          </label>
+          <input
+            {...register('email')}
+            type="email"
+            id="email"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0000FF] focus:border-transparent"
+          />
+          {errors.email && (
+            <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+          )}
+        </div>
+
+        {/* Phone */}
+        <div>
+          <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+            {t('phone')}
+          </label>
+          <input
+            {...register('phone')}
+            type="tel"
+            id="phone"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0000FF] focus:border-transparent"
+          />
+          {errors.phone && (
+            <p className="mt-1 text-sm text-red-600">{errors.phone.message}</p>
+          )}
+        </div>
       </div>
 
-      {/* Project Description */}
+      {/* Question or Comment */}
       <div>
         <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-          {t('message')} *
+          {t('message')}
         </label>
         <textarea
           {...register('message')}
           id="message"
           rows={6}
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0000FF] focus:border-transparent"
         />
         {errors.message && (
           <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
@@ -377,7 +323,7 @@ export default function ContactForm({ type = 'contact', locale }: ContactFormPro
           multiple
           accept=".pdf,.dwg,.jpg,.jpeg,.png,.doc,.docx"
           onChange={handleFileChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0000FF] focus:border-transparent"
         />
         <p className="mt-1 text-sm text-gray-500">{t('uploadDocumentsHint')}</p>
         
@@ -405,10 +351,10 @@ export default function ContactForm({ type = 'contact', locale }: ContactFormPro
           <input
             {...register('privacyAccepted')}
             type="checkbox"
-            className="mt-1 mr-2 h-4 w-4 text-primary-900 focus:ring-primary-500 border-gray-300 rounded"
+            className="mt-1 mr-2 h-4 w-4 text-[#0000FF] focus:ring-[#0000FF] border-gray-300 rounded"
           />
           <span className="text-sm text-gray-700">
-            {t('privacyAccept')} *
+            {t('privacyAccept')}
           </span>
         </label>
         {errors.privacyAccepted && (
@@ -454,12 +400,10 @@ export default function ContactForm({ type = 'contact', locale }: ContactFormPro
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-primary-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full bg-[#0000FF] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#0000FF] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {isSubmitting ? t('sending') : t('send')} *
+        {isSubmitting ? t('sending') : t('send')}
       </button>
-
-      <p className="text-xs text-gray-500 text-center">* {t('requiredField')}</p>
     </form>
   )
 }

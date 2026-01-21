@@ -1,4 +1,5 @@
 import { MongoClient } from 'mongodb'
+import dns from 'node:dns/promises'
 
 /**
  * MongoDB connection utility
@@ -14,6 +15,14 @@ import { MongoClient } from 'mongodb'
  * const db = client.db()
  * ```
  */
+
+// Fix DNS resolution issues by using reliable DNS servers
+// This helps with querySrv ECONNREFUSED errors
+try {
+  dns.setServers(['8.8.8.8', '8.8.4.4', '1.1.1.1', '1.0.0.1']) // Google and Cloudflare DNS
+} catch (error) {
+  console.warn('Could not set DNS servers:', error)
+}
 
 // Check if we're in build phase - Next.js sets this during build
 const isBuildTime = process.env.NEXT_PHASE === 'phase-production-build' || 
@@ -56,14 +65,26 @@ if (isBuildTime) {
   }
 
   if (!globalWithMongo._mongoClientPromise) {
-    client = new MongoClient(uri)
+    client = new MongoClient(uri, {
+      serverSelectionTimeoutMS: 10000, // 10 seconds
+      connectTimeoutMS: 10000,
+      socketTimeoutMS: 45000,
+      retryWrites: true,
+      retryReads: true,
+    })
     globalWithMongo._mongoClientPromise = client.connect()
   }
   clientPromise = globalWithMongo._mongoClientPromise
 } else {
   // In production mode, it's best to not use a global variable.
   // Each import gets a fresh connection promise.
-  client = new MongoClient(uri)
+  client = new MongoClient(uri, {
+    serverSelectionTimeoutMS: 10000, // 10 seconds
+    connectTimeoutMS: 10000,
+    socketTimeoutMS: 45000,
+    retryWrites: true,
+    retryReads: true,
+  })
   clientPromise = client.connect()
 }
 

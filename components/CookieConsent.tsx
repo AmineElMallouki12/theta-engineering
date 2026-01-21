@@ -44,14 +44,14 @@ export default function CookieConsent() {
   }
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t-2 border-primary-900 shadow-2xl">
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t-2 border-[#0000FF] shadow-2xl">
       <div className="container mx-auto px-4 py-4 md:py-6">
         <div className="max-w-6xl mx-auto">
           {!showDetails ? (
             // Main banner
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
               <div className="flex-1">
-                <h3 className="text-lg md:text-xl font-bold text-primary-900 mb-2">
+                <h3 className="text-lg md:text-xl font-bold text-[#0000FF] mb-2">
                   {t('title')}
                 </h3>
                 <p className="text-sm md:text-base text-gray-700 mb-2">
@@ -61,7 +61,7 @@ export default function CookieConsent() {
                   {t('moreInfo')}{' '}
                   <Link
                     href={`/${locale}/privacy`}
-                    className="text-primary-900 hover:text-primary-800 underline"
+                    className="text-[#0000FF] hover:text-[#0000FF] underline"
                   >
                     {t('privacyPolicy')}
                   </Link>
@@ -71,7 +71,7 @@ export default function CookieConsent() {
               <div className="flex flex-col sm:flex-row gap-2 md:gap-3 w-full md:w-auto">
                 <button
                   onClick={acceptCookies}
-                  className="px-4 md:px-6 py-2 bg-primary-900 text-white rounded-lg font-semibold hover:bg-primary-800 transition-colors text-sm md:text-base whitespace-nowrap"
+                  className="px-4 md:px-6 py-2 bg-[#0000FF] text-white rounded-lg font-semibold hover:bg-[#0000FF] transition-colors text-sm md:text-base whitespace-nowrap"
                 >
                   {t('acceptAll')}
                 </button>
@@ -83,7 +83,7 @@ export default function CookieConsent() {
                 </button>
                 <button
                   onClick={() => setShowDetails(true)}
-                  className="px-4 md:px-6 py-2 border-2 border-primary-900 text-primary-900 rounded-lg font-semibold hover:bg-primary-50 transition-colors text-sm md:text-base whitespace-nowrap"
+                  className="px-4 md:px-6 py-2 border-2 border-[#0000FF] text-[#0000FF] rounded-lg font-semibold hover:bg-[#0000FF] hover:text-white transition-colors text-sm md:text-base whitespace-nowrap"
                 >
                   {t('customize')}
                 </button>
@@ -93,7 +93,7 @@ export default function CookieConsent() {
             // Detailed preferences
             <div>
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg md:text-xl font-bold text-primary-900">
+                <h3 className="text-lg md:text-xl font-bold text-[#0000FF]">
                   {t('preferences')}
                 </h3>
                 <button
@@ -140,7 +140,7 @@ export default function CookieConsent() {
                         className="sr-only peer"
                         id="analytics"
                       />
-                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-900"></div>
+                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#0000FF] rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#0000FF]"></div>
                     </label>
                   </div>
                 </div>
@@ -163,7 +163,7 @@ export default function CookieConsent() {
                         className="sr-only peer"
                         id="marketing"
                       />
-                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-900"></div>
+                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#0000FF] rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#0000FF]"></div>
                     </label>
                   </div>
                 </div>
@@ -191,7 +191,7 @@ export default function CookieConsent() {
                       acceptNecessary()
                     }
                   }}
-                  className="px-4 md:px-6 py-2 bg-primary-900 text-white rounded-lg font-semibold hover:bg-primary-800 transition-colors text-sm md:text-base"
+                  className="px-4 md:px-6 py-2 bg-[#0000FF] text-white rounded-lg font-semibold hover:bg-[#0000FF] transition-colors text-sm md:text-base"
                 >
                   {t('savePreferences')}
                 </button>

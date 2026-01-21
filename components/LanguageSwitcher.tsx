@@ -14,26 +14,38 @@ export default function LanguageSwitcher() {
   }
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-1">
       <button
         onClick={() => switchLanguage('en')}
-        className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
+        className={`p-0.5 rounded transition-all ${
           locale === 'en'
-            ? 'bg-primary-900 text-white'
-            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+            ? 'opacity-100'
+            : 'opacity-70 hover:opacity-100'
         }`}
+        title="English"
       >
-        EN
+        <img 
+          src="https://flagcdn.com/w40/gb.png" 
+          srcSet="https://flagcdn.com/w80/gb.png 2x"
+          alt="English" 
+          className="w-6 h-4 object-cover rounded-sm shadow-sm"
+        />
       </button>
       <button
         onClick={() => switchLanguage('nl')}
-        className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
+        className={`p-0.5 rounded transition-all ${
           locale === 'nl'
-            ? 'bg-primary-900 text-white'
-            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+            ? 'opacity-100'
+            : 'opacity-70 hover:opacity-100'
         }`}
+        title="Nederlands"
       >
-        NL
+        <img 
+          src="https://flagcdn.com/w40/nl.png" 
+          srcSet="https://flagcdn.com/w80/nl.png 2x"
+          alt="Nederlands" 
+          className="w-6 h-4 object-cover rounded-sm shadow-sm"
+        />
       </button>
     </div>
   )

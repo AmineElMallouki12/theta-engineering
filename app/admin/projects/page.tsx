@@ -59,7 +59,7 @@ export default function AdminProjectsPage() {
   if (loading) {
     return (
       <div className="text-center py-12">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-900 mx-auto"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0000FF] mx-auto"></div>
       </div>
     )
   }
@@ -67,8 +67,8 @@ export default function AdminProjectsPage() {
   return (
     <div>
         <div className="mb-6 md:mb-8">
-          <h1 className="text-2xl md:text-3xl font-bold text-primary-900 mb-2">{t('projects')}</h1>
-          <div className="w-16 h-1 bg-primary-900"></div>
+          <h1 className="text-2xl md:text-3xl font-bold text-[#0000FF] mb-2">{t('projects')}</h1>
+          <div className="w-16 h-1 bg-[#0000FF]"></div>
         </div>
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 md:mb-8">
           <button
@@ -76,7 +76,7 @@ export default function AdminProjectsPage() {
               setEditingProject(null)
               setShowForm(true)
             }}
-            className="w-full sm:w-auto px-4 md:px-6 py-2 text-sm md:text-base bg-primary-900 text-white rounded-lg hover:bg-primary-800 transition-colors"
+            className="w-full sm:w-auto px-4 md:px-6 py-2 text-sm md:text-base bg-[#0000FF] text-white rounded-lg hover:bg-[#0000FF] transition-colors"
           >
             {t('addNewProject')}
           </button>
@@ -122,7 +122,7 @@ export default function AdminProjectsPage() {
                   <div className="flex flex-col sm:flex-row gap-2">
                     <button
                       onClick={() => handleEdit(project)}
-                      className="flex-1 px-3 md:px-4 py-2 text-sm md:text-base bg-primary-900 text-white rounded-lg hover:bg-primary-800 transition-colors"
+                      className="flex-1 px-3 md:px-4 py-2 text-sm md:text-base bg-[#0000FF] text-white rounded-lg hover:bg-[#0000FF] transition-colors"
                     >
                       {t('edit')}
                     </button>

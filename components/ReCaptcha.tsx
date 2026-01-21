@@ -32,6 +32,7 @@ export interface ReCaptchaRef {
 const ReCaptcha = forwardRef<ReCaptchaRef, ReCaptchaProps>(({ onVerify, onExpire, locale = 'nl' }, ref) => {
   const [isLoaded, setIsLoaded] = useState(false)
   const [widgetId, setWidgetId] = useState<number | null>(null)
+  const [renderError, setRenderError] = useState<string | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''
 
@@ -137,21 +138,52 @@ const ReCaptcha = forwardRef<ReCaptchaRef, ReCaptchaProps>(({ onVerify, onExpire
           console.log('reCAPTCHA expired')
           onExpire()
         },
-        'error-callback': () => {
-          console.error('reCAPTCHA error occurred')
+        'error-callback': (error?: any) => {
+          console.error('reCAPTCHA error occurred:', error)
+          // Common error: invalid key type usually means keys don't match or wrong version
+          if (error && typeof error === 'string' && error.includes('invalid')) {
+            console.error('reCAPTCHA key type error - make sure your site key and secret key match and are both for reCAPTCHA v2 (checkbox)')
+          }
           onExpire()
         },
       })
       setWidgetId(id)
-    } catch (error) {
+      setRenderError(null)
+    } catch (error: any) {
       console.error('Failed to render reCAPTCHA:', error)
+      // Check for specific error messages
+      if (error?.message?.includes('invalid') || error?.message?.includes('key') || error?.toString().includes('invalid')) {
+        setRenderError('Invalid reCAPTCHA key type. Please verify your keys are for reCAPTCHA v2 (checkbox) and match each other.')
+      } else {
+        setRenderError('Failed to load reCAPTCHA. Please check your configuration.')
+      }
     }
   }, [isLoaded, siteKey, onVerify, onExpire, widgetId])
+
+  useEffect(() => {
+    // Reset render error when site key changes
+    setRenderError(null)
+  }, [siteKey])
 
   if (!siteKey) {
     return (
       <div className="text-sm text-red-600 p-2 border border-red-300 rounded">
         reCAPTCHA is not configured. Please add NEXT_PUBLIC_RECAPTCHA_SITE_KEY to your environment variables.
+      </div>
+    )
+  }
+
+  if (renderError) {
+    return (
+      <div className="text-sm text-red-600 p-3 border border-red-300 rounded bg-red-50">
+        <p className="font-semibold mb-2">reCAPTCHA Configuration Error</p>
+        <p className="mb-2">{renderError}</p>
+        <p className="text-xs mt-2">Please check:</p>
+        <ul className="text-xs list-disc list-inside mt-1 space-y-1">
+          <li>Your site key and secret key are from the same reCAPTCHA site</li>
+          <li>Both keys are for reCAPTCHA v2 (checkbox), not v3 or Enterprise</li>
+          <li>Your domain is registered in the reCAPTCHA admin console</li>
+        </ul>
       </div>
     )
   }

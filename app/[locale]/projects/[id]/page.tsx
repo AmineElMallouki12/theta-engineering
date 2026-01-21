@@ -39,9 +39,9 @@ export default async function ProjectDetailPage({
     <div className="bg-gradient-to-b from-white to-primary-50">
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
-          <div className="border-l-4 border-primary-900 pl-6 mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary-900">{title}</h1>
-            <p className="text-xl text-primary-700">{description}</p>
+          <div className="border-l-4 border-[#0000FF] pl-6 mb-8">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#0000FF]">{title}</h1>
+            <p className="text-xl text-[#0000FF]">{description}</p>
           </div>
 
           {project.images && project.images.length > 0 && (
@@ -61,30 +61,30 @@ export default async function ProjectDetailPage({
           )}
 
           {content && (
-            <div className="bg-white rounded-lg shadow-lg p-8 border-t-4 border-primary-900 mb-8">
+            <div className="bg-white rounded-lg shadow-lg p-8 border-t-4 border-[#0000FF] mb-8">
               <div className="prose prose-lg max-w-none">
                 <div className="whitespace-pre-wrap text-gray-700">{content}</div>
               </div>
             </div>
           )}
 
-          <div className="bg-white rounded-lg shadow-md p-6 border-2 border-primary-200">
+          <div className="bg-white rounded-lg shadow-md p-6 border-2 border-[#0000FF]">
             <div className="grid md:grid-cols-3 gap-4 text-sm">
               {project.category && (
                 <div>
-                  <span className="font-semibold text-primary-900">Category:</span>
+                  <span className="font-semibold text-[#0000FF]">Category:</span>
                   <p className="text-gray-600">{project.category}</p>
                 </div>
               )}
               {project.client && (
                 <div>
-                  <span className="font-semibold text-primary-900">Client:</span>
+                  <span className="font-semibold text-[#0000FF]">Client:</span>
                   <p className="text-gray-600">{project.client}</p>
                 </div>
               )}
               {project.year && (
                 <div>
-                  <span className="font-semibold text-primary-900">Year:</span>
+                  <span className="font-semibold text-[#0000FF]">Year:</span>
                   <p className="text-gray-600">{project.year}</p>
                 </div>
               )}

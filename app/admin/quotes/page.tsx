@@ -98,7 +98,7 @@ export default function AdminQuotesPage() {
   if (loading) {
     return (
       <div className="text-center py-12">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-900 mx-auto"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0000FF] mx-auto"></div>
       </div>
     )
   }
@@ -106,8 +106,8 @@ export default function AdminQuotesPage() {
         return (
           <div>
               <div className="mb-6 md:mb-8">
-                <h1 className="text-2xl md:text-3xl font-bold text-primary-900 mb-2">{t('quotesContacts')}</h1>
-                <div className="w-16 h-1 bg-primary-900"></div>
+                <h1 className="text-2xl md:text-3xl font-bold text-[#0000FF] mb-2">{t('quotesContacts')}</h1>
+                <div className="w-16 h-1 bg-[#0000FF]"></div>
               </div>
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 md:mb-8">
           <div className="flex flex-wrap gap-2">
@@ -117,7 +117,7 @@ export default function AdminQuotesPage() {
                 onClick={() => setFilter(status)}
                 className={`px-3 md:px-4 py-2 rounded-lg text-sm md:text-base font-medium transition-colors ${
                   filter === status
-                    ? 'bg-primary-900 text-white'
+                    ? 'bg-[#0000FF] text-white'
                     : 'bg-white text-gray-700 hover:bg-gray-100'
                 }`}
               >
@@ -127,7 +127,7 @@ export default function AdminQuotesPage() {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md border-t-4 border-primary-900 overflow-hidden">
+        <div className="bg-white rounded-lg shadow-md border-t-4 border-[#0000FF] overflow-hidden">
           {quotes.length === 0 ? (
             <div className="p-12 text-center text-gray-500">{t('noQuotesFound')}</div>
           ) : (
@@ -143,13 +143,13 @@ export default function AdminQuotesPage() {
                               quote.status === 'new'
                                 ? 'bg-red-100 text-red-800'
                                 : quote.status === 'read'
-                                ? 'bg-blue-100 text-blue-800'
+                                ? 'bg-[#ccccff] text-[#0000FF]'
                                 : 'bg-gray-100 text-gray-800'
                             }`}
                           >
                             {quote.status === 'new' ? t('new') : quote.status === 'read' ? t('read') : t('archived')}
                           </span>
-                          <span className="px-2 md:px-3 py-1 rounded-full text-xs font-medium bg-primary-100 text-primary-800">
+                          <span className="px-2 md:px-3 py-1 rounded-full text-xs font-medium bg-[#0000FF] text-white">
                             {quote.type === 'quote' ? t('quote') : t('contact')}
                           </span>
                         </div>
@@ -208,7 +208,7 @@ export default function AdminQuotesPage() {
                                     href={docUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-1 px-3 py-1.5 text-sm bg-primary-50 text-primary-900 rounded-lg hover:bg-primary-100 transition-colors border border-primary-200"
+                                    className="inline-flex items-center gap-1 px-3 py-1.5 text-sm bg-[#0000FF] text-white rounded-lg hover:bg-[#0000FF] transition-colors border border-[#0000FF]"
                                   >
                                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
@@ -234,7 +234,7 @@ export default function AdminQuotesPage() {
                         <>
                           <button
                             onClick={() => updateQuoteStatus(quote._id!.toString(), 'read')}
-                            className="px-3 md:px-4 py-2 text-sm md:text-base bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                            className="px-3 md:px-4 py-2 text-sm md:text-base bg-[#0000FF] text-white rounded-lg hover:bg-[#0000FF] transition-colors"
                           >
                             {t('markAsRead')}
                           </button>

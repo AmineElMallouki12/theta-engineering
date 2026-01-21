@@ -3,9 +3,12 @@
     "home": "Home",
     "about": "Over Ons",
     "services": "Diensten",
+    "expertise": "Expertise",
     "projects": "Projecten",
-    "careers": "Carrière",
-    "contact": "Contact"
+    "careers": "Vacatures",
+    "contact": "Contact",
+    "expertise1": "Constructief advies",
+    "expertise2": "Managementadvies"
   },
   "home": {
     "title": "Theta Engineering",
@@ -15,37 +18,40 @@
     "expertise": "Expertise",
     "expertiseMainText": "Bij Theta Engineering draait alles om het samenbrengen van visie en precisie. Wij vertalen uw bouwplannen naar slimme, veilige en duurzame constructieve oplossingen. Met oog voor detail en een heldere blik op de toekomst zorgen we ervoor dat elk ontwerp klopt van concept tot uitvoering. Where vision meets precision: dát is de kracht achter onze werkwijze.",
     "expertiseSupportText": "Wij ondersteunen zowel particuliere als zakelijke opdrachtgevers binnen de woningbouw, utiliteitsbouw en industrie. Of het nu gaat om een kleinschalige verbouwing of een omvangrijk nieuwbouwproject: Theta Engineering levert betrouwbare, hoogwaardige en praktische oplossingen.",
-    "expertiseServicesTitle": "Onze dienstverlening bestaat uit vier kernspecialismen:",
+    "expertiseServicesTitle": "Onze dienstverlening bestaat uit twee kernspecialismen:",
+    "expertise1": "Constructief advies",
+    "expertise2": "Managementadvies",
     "expertiseDesc": "Jarenlange ervaring in engineering oplossingen",
-    "innovation": "Innovatie",
-    "innovationDesc": "Geavanceerde technologie en moderne benaderingen",
-    "quality": "Kwaliteit",
-    "qualityDesc": "Toewijding aan excellentie in elk project",
-    "statsTitle": "Onze Prestaties",
-    "yearsExperience": "Jaar Ervaring",
-    "projectsCompleted": "Projecten Voltooid",
-    "satisfiedClients": "Tevreden Klanten",
-    "teamMembers": "Teamleden",
     "whyChooseUs": "Waarom Theta Engineering?",
-    "whyChooseUsDesc": "Ontdek wat ons onderscheidt in de engineering industrie",
+    "whyChooseUsDesc": "Ontdek wat ons onderscheidt in de engineeringsindustrie",
     "reliability": "Betrouwbaarheid",
     "reliabilityDesc": "We leveren consistente, hoogwaardige resultaten die u kunt vertrouwen",
     "efficiency": "Efficiëntie",
     "efficiencyDesc": "Geoptimaliseerde processen die tijd en middelen besparen",
     "support": "Ondersteuning",
     "supportDesc": "24/7 klantenservice en doorlopende projectondersteuning",
+    "innovative": "Innovatief",
+    "innovativeDesc": "Integratie van visie en technische precisie",
+    "futureFocused": "Toekomstgericht",
+    "futureFocusedDesc": "Focus op slimme, veilige en duurzame oplossingen",
+    "allround": "Allround",
+    "allroundDesc": "Brede inzetbaarheid met maatwerk per project",
     "processTitle": "Ons Werkproces",
     "processDesc": "Een gestructureerde aanpak voor succesvolle projecten",
-    "step1": "Consultatie",
-    "step1Desc": "We luisteren naar uw behoeften en analyseren uw vereisten",
-    "step2": "Planning",
-    "step2Desc": "Ontwikkeling van een gedetailleerd projectplan en tijdlijn",
-    "step3": "Uitvoering",
-    "step3Desc": "Professionele implementatie met regelmatige updates",
-    "step4": "Levering",
-    "step4Desc": "Kwaliteitscontrole en tijdige projectafronding",
-    "ctaTitle": "Klaar om te beginnen?",
-    "ctaDesc": "Neem vandaag nog contact met ons op en ontdek hoe we uw project kunnen helpen",
+    "step1": "Intake",
+    "step1Desc": "We bespreken uw wensen, uitgangspunten en de scope van het project",
+    "step2": "Analyse",
+    "step2Desc": "We analyseren de technische randvoorwaarden, risico's en mogelijkheden",
+    "step3": "Ontwerp & berekeningen/Advies",
+    "step3Desc": "We werken het constructief ontwerp uit en geven onderbouwd advies",
+    "step4": "Evaluatie",
+    "step4Desc": "We stemmen het ontwerp en de adviezen zorgvuldig met u af",
+    "step5": "Oplevering & begeleiding",
+    "step5Desc": "We leveren duidelijke documentatie en begeleiden waar nodig de uitvoering",
+    "whatsappButton": "WhatsApp Direct",
+    "whatsappLink": "https://wa.me/31612345678",
+    "ctaTitle": "Benieuwd wat wij voor uw project kunnen betekenen?",
+    "ctaDesc": "Neem gerust contact met ons op of vraag een offerte aan.",
     "ctaButton": "Start Nu",
     "services": {
       "service1": {
@@ -72,11 +78,9 @@
     "backgroundTitle": "Onze achtergrond",
     "background": "Na jaren ervaring hebben we onze krachten gebundeld tot één team. Die gezamenlijke expertise vormt de basis voor ons werk binnen woningbouw, utiliteitsbouw en industrie.",
     "expertiseTitle": "Expertise",
-    "expertiseIntro": "Wij leveren slimme, veilige en duurzame oplossingen binnen vier kerngebieden:",
-    "expertise1": "Constructief ontwerp & berekeningen",
-    "expertise2": "Beoordeling constructieve veiligheid",
-    "expertise3": "Projectmanagement",
-    "expertise4": "Inspectie & constructief advies",
+    "expertiseIntro": "Wij leveren slimme, veilige en duurzame oplossingen binnen twee kerngebieden:",
+    "expertise1": "Constructief advies",
+    "expertise2": "Managementadvies",
     "expertiseOutro": "Of het nu gaat om nieuwbouw, verbouw of bestaande bouw wij bieden helder, praktisch en toekomstbestendig advies.",
     "workProcessTitle": "Werkwijze",
     "workProcessIntro": "Onze aanpak is helder en efficiënt:",
@@ -96,15 +100,26 @@
     "serviceDescription": "Gedetailleerde beschrijving van engineering dienst {item}. Dit gedeelte wordt aangepast met specifieke diensten die door Theta Engineering worden aangeboden.",
     "service1": {
       "title": "Constructief ontwerp en berekeningen",
-      "intro": "Een succesvol bouwproject begint met een helder en betrouwbaar constructief ontwerp.",
-      "servicesIntro": "Theta Engineering verzorgt:",
+      "intro": "Een succesvol bouwproject begint met een helder en betrouwbaar constructief ontwerp. Bij Theta Engineering vormen veiligheid, kwaliteit en haalbaarheid de basis van ieder project.",
+      "servicesIntro": "Wij ondersteunen u met:",
       "services": [
         "Constructieberekeningen voor nieuwbouw, verbouw en transformaties",
         "Constructief advies in elke fase van het project"
       ],
-      "description": "Wij denken actief mee over technische mogelijkheden, duurzaamheid, materiaalkeuzes en uitvoerbaarheid. Zo zorgen we voor een veilige, efficiënte en toekomstbestendige constructie."
+      "description": "Wij denken actief mee over technische mogelijkheden, duurzaamheid, materiaalkeuze, veilige, efficiënte en toekomstbestendige constructie."
     },
     "service2": {
+      "title": "Constructief advies",
+      "intro": "Een succesvol bouwproject begint met een doordacht en betrouwbaar constructief ontwerp. Bij Theta Engineering vormen veiligheid, kwaliteit en haalbaarheid de basis van ieder project.",
+      "servicesIntro": "Wij ondersteunen u met:",
+      "services": [
+        "Constructieberekeningen voor nieuwbouw, verbouw en transformaties",
+        "Constructief advies in elke fase van het ontwerp- en bouwproces",
+        "Constructieve inspecties van bestaande bouwwerken, inclusief passend advies"
+      ],
+      "description": "Wij denken actief mee over technische oplossingen, duurzaamheid, materiaalkeuzes en uitvoerbaarheid. Daarbij zoeken we altijd naar een optimale balans tussen veiligheid, efficiëntie en toekomstbestendigheid. Dankzij onze duidelijke rapportages en concrete aanbevelingen heeft u direct inzicht in de mogelijkheden en de vervolgstappen. Zo helpen wij u uw plannen met vertrouwen en zekerheid te realiseren."
+    },
+    "service2b": {
       "title": "Beoordeling van de constructieve veiligheid",
       "intro": "Gaat u verbouwen, renoveren of transformeren? Dan is inzicht in de huidige constructieve staat essentieel.",
       "servicesIntro": "Wij beoordelen bestaande gebouwen op:",
@@ -114,18 +129,25 @@
         "Toelaatbaarheid van doorbraken en indelingswijzigingen",
         "Noodzakelijke versterkingsmaatregelen"
       ],
-      "description": "Met een duidelijke rapportage en concreet advies weet u precies wat mogelijk is en welke stappen nodig zijn om uw plannen veilig te realiseren."
+      "description": "Met een duidelijke rapportage en concrete advies weet u precies wat mogelijk is en welke stappen nodig zijn om uw plannen veilig te realiseren."
     },
     "service3": {
       "title": "Projectmanagement",
-      "intro": "Bij complexe projecten komt meer kijken dan alleen techniek. Theta Engineering verbindt alle disciplines tot één efficiënt en integraal ontwerp. Wij coördineren het proces, houden overzicht en bewaken kwaliteit, planning en samenwerking.",
-      "servicesIntro": "Onze projectmanagementdiensten worden ingezet in:",
+      "intro": "Bij complexe projecten komt meer kijken dan alleen techniek. Theta Engineering is PMI-gecertificeerd en combineert professioneel project- en procesmanagement met diepgaande technische expertise. Wij coördineren en optimaliseren processen, behouden het overzicht en bewaken kwaliteit, planning en samenwerking. Daarnaast adviseren wij onze klanten om het maximale resultaat uit hun projecten te behalen.",
+      "servicesIntro": "Onze projectmanagementdiensten worden ingezet binnen de volgende sectoren:",
       "services": [
+        "Industrie- en energieprojecten",
         "Woningbouw",
-        "Utiliteitsbouw",
-        "Industrie en energieprojecten"
+        "Utiliteitsbouw"
       ],
-      "description": "Met een resultaatgerichte aanpak zorgen wij ervoor dat ieder project soepel verloopt van het eerste idee tot de realisatie."
+      "description": "Met een resultaatgerichte aanpak zorgen wij ervoor dat ieder project soepel verloopt, van het eerste idee tot en met de realisatie."
+    },
+    "service3b": {
+      "title": "Managementadvies",
+      "intro": "Bij (complexe) projecten komt meer kijken dan alleen techniek. Theta Engineering is PMI-gecertificeerd en combineert professioneel project- en procesmanagement met diepgaande technische expertise. Wij coördineren en optimaliseren processen, behouden het overzicht en bewaken kwaliteit, planning en samenwerking. Daarnaast adviseren wij onze klanten om het maximale resultaat uit hun projecten te behalen.",
+      "servicesIntro": "",
+      "services": [],
+      "description": "Ook vervullen wij een belangrijke rol in transitiemanagement. Wij ondersteunen organisaties bij verandering en modernisering van structuren, passend bij de eisen van deze tijd. Dit omvat onder meer de overgang van een verticale naar een meer horizontale organisatiestructuur en het ontwikkelen en implementeren van duurzaamheidsstrategieën binnen bestaande bedrijfsstructuren. Onze projectmanagementdiensten worden ingezet binnen de volgende sectoren: Industrie- en energieprojecten, Woningbouw, Utiliteitsbouw. Met een resultaatgerichte aanpak zorgen wij ervoor dat ieder project soepel verloopt, van het eerste idee tot en met de realisatie."
     },
     "service4": {
       "title": "Inspectie en constructief advies",
@@ -142,7 +164,7 @@
     "noProjects": "Er zijn nog geen projecten beschikbaar. Kom binnenkort terug!"
   },
   "careers": {
-    "title": "Carrière",
+    "title": "Vacatures",
     "subtitle": "Sluit je aan bij ons team van engineering professionals",
     "description1": "Theta Engineering is altijd op zoek naar getalenteerde ingenieurs en technische professionals om zich bij ons team aan te sluiten. We bieden mogelijkheden voor zowel voltijdse functies als freelance/ZZP (zelfstandige zonder personeel) samenwerkingen.",
     "description2": "We zijn vooral geïnteresseerd in technisch tekenaars en modelleurs (technisch tekenaars/modelleurs) die kunnen bijdragen aan ons diverse scala aan projecten.",
@@ -156,30 +178,22 @@
   "contact": {
     "title": "Contact",
     "subtitle": "Neem Contact Op",
+    "formTitle": "Stel gerust je vraag of vraag een offerte aan!",
     "requestQuote": "Offerte Aanvragen",
-    "fullName": "Volledige naam",
+    "firstName": "Voornaam",
+    "lastName": "Achternaam",
     "email": "E-mailadres",
     "phone": "Telefoonnummer",
-    "clientType": "Organisatie/Particulier",
-    "clientTypeOrganisatie": "Organisatie",
-    "clientTypeParticulier": "Particulier",
-    "organizationName": "Naam Organisatie",
-    "projectLocation": "Projectlocatie",
-    "projectType": "Type project",
-    "projectType1": "Constructief ontwerp en berekeningen",
-    "projectType2": "Beoordeling van constructieve veiligheid",
-    "projectType3": "Projectmanagement",
-    "projectType4": "Inspectie en constructief advies",
-    "message": "Projectomschrijving",
+    "message": "Vraag of opmerking",
     "uploadDocuments": "Upload documenten (optioneel)",
-    "uploadDocumentsHint": "PDF, DWG, JPG, DOCX",
+    "uploadDocumentsHint": "PDF, DWG, JPG, DOCX (max. 10MB per bestand)",
     "privacyAccept": "Ik ga akkoord met de privacyverklaring.",
     "privacyAcceptRequired": "U moet akkoord gaan met de privacyverklaring.",
     "send": "Versturen",
     "sending": "Verzenden...",
     "success": "Bedankt! We nemen zo snel mogelijk contact met u op.",
     "error": "Er is iets misgegaan. Probeer het opnieuw.",
-    "needQuote": "Heeft u een gedetailleerde offerte nodig? Gebruik het formulier hierboven en selecteer \"Offerte Aanvragen\" of neem rechtstreeks contact met ons op.",
+    "needQuote": "Heeft u een gedetailleerde offerte nodig? Gebruik het formulier hierboven.",
     "requiredField": "verplicht veld",
     "selectFile": "Selecteer bestand",
     "noFileSelected": "Geen bestand geselecteerd",
@@ -187,7 +201,13 @@
     "removeFile": "Verwijderen",
     "recaptchaRequired": "Gelieve de reCAPTCHA te verifiëren",
     "recaptchaExpired": "reCAPTCHA is verlopen. Verifieer opnieuw.",
-    "recaptchaError": "reCAPTCHA verificatie mislukt. Probeer het opnieuw."
+    "recaptchaError": "reCAPTCHA verificatie mislukt. Probeer het opnieuw.",
+    "validation": {
+      "firstNameMin": "Voornaam moet minimaal 2 tekens bevatten",
+      "lastNameMin": "Achternaam moet minimaal 2 tekens bevatten",
+      "emailInvalid": "Ongeldig e-mailadres",
+      "messageMin": "Bericht moet minimaal 10 tekens bevatten"
+    }
   },
   "footer": {
     "privacy": "Privacybeleid",

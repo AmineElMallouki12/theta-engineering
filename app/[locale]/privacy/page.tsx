@@ -9,14 +9,14 @@ export default async function PrivacyPage({
     <div className="bg-gradient-to-b from-white to-primary-50">
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
-          <div className="border-l-4 border-primary-900 pl-6 mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary-900">Privacy Policy</h1>
+          <div className="border-l-4 border-[#0000FF] pl-6 mb-8">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#0000FF]">Privacy Policy</h1>
           </div>
           
-          <div className="bg-white rounded-lg shadow-lg p-8 border-t-4 border-primary-900 prose prose-lg max-w-none">
+          <div className="bg-white rounded-lg shadow-lg p-8 border-t-4 border-[#0000FF] prose prose-lg max-w-none">
         
             <section className="mb-8">
-              <h2 className="text-2xl font-semibold mb-4 text-primary-900">1. Introduction</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-[#0000FF]">1. Introduction</h2>
               <p className="text-gray-700">
                 Theta Engineering ("we", "our", or "us") is committed to protecting your privacy. 
                 This Privacy Policy explains how we collect, use, and safeguard your personal 
@@ -25,7 +25,7 @@ export default async function PrivacyPage({
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-semibold mb-4 text-primary-900">2. Information We Collect</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-[#0000FF]">2. Information We Collect</h2>
               <p className="text-gray-700 mb-4">
                 We collect information that you provide directly to us, including:
               </p>
@@ -38,7 +38,7 @@ export default async function PrivacyPage({
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-semibold mb-4 text-primary-900">3. How We Use Your Information</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-[#0000FF]">3. How We Use Your Information</h2>
               <p className="text-gray-700 mb-4">
                 We use the information we collect to:
               </p>
@@ -52,7 +52,7 @@ export default async function PrivacyPage({
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-semibold mb-4 text-primary-900">4. GDPR Compliance</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-[#0000FF]">4. GDPR Compliance</h2>
               <p className="text-gray-700">
                 As a company operating in the Netherlands and EU, we comply with the General 
                 Data Protection Regulation (GDPR). You have the right to:
@@ -67,7 +67,7 @@ export default async function PrivacyPage({
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-semibold mb-4 text-primary-900">5. Data Security</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-[#0000FF]">5. Data Security</h2>
               <p className="text-gray-700">
                 We implement appropriate technical and organizational measures to protect your 
                 personal information against unauthorized access, alteration, disclosure, or destruction.
@@ -75,7 +75,7 @@ export default async function PrivacyPage({
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-semibold mb-4 text-primary-900">6. Contact Us</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-[#0000FF]">6. Contact Us</h2>
               <p className="text-gray-700">
                 If you have questions about this Privacy Policy or wish to exercise your rights, 
                 please contact us through our contact form.

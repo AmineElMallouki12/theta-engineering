@@ -16,7 +16,7 @@ function isSpam(data: any): boolean {
   ]
   
   const message = (data.message || '').toLowerCase()
-  const name = (data.name || '').toLowerCase()
+  const name = (data.name || `${data.firstName || ''} ${data.lastName || ''}`).toLowerCase()
   
   // Check for excessive links or emails in message
   const linkMatches = message.match(/http[s]?:\/\//gi) || []
@@ -136,17 +136,13 @@ export async function POST(request: NextRequest) {
     }
 
     // Validate required fields
-    if (!data.name || !data.email || !data.phone || !data.message || !data.projectType || !data.privacyAccepted || !data.clientType) {
+    const firstName = data.firstName || (data.name ? data.name.split(' ')[0] : '')
+    const lastName = data.lastName || (data.name ? data.name.split(' ').slice(1).join(' ') : '')
+    const fullName = data.name || `${firstName} ${lastName}`.trim()
+    
+    if (!fullName || !data.email || !data.message || !data.privacyAccepted) {
       return NextResponse.json(
         { error: 'Missing required fields' },
-        { status: 400 }
-      )
-    }
-
-    // Validate organization name if client type is organization
-    if (data.clientType === 'organisatie' && !data.organizationName) {
-      return NextResponse.json(
-        { error: 'Organization name is required when Organization is selected' },
         { status: 400 }
       )
     }
@@ -156,13 +152,13 @@ export async function POST(request: NextRequest) {
 
     // Save quote to database
     const quote: Omit<Quote, '_id'> = {
-      name: data.name,
+      name: fullName,
       email: data.email,
-      phone: data.phone,
-      clientType: data.clientType,
-      organizationName: data.organizationName || undefined,
-      projectLocation: data.projectLocation || undefined,
-      projectType: data.projectType,
+      phone: data.phone || undefined,
+      clientType: 'particulier', // Default value for backward compatibility
+      organizationName: undefined,
+      projectLocation: undefined,
+      projectType: undefined,
       message: data.message,
       documents: data.documents || [],
       privacyAccepted: data.privacyAccepted,
@@ -201,19 +197,15 @@ export async function POST(request: NextRequest) {
         await transporter.sendMail({
           from: process.env.SMTP_FROM || process.env.SMTP_USER,
           to: process.env.SMTP_USER, // Admin email
-          subject: `New ${data.type === 'quote' ? 'Quote Request' : 'Contact'} from ${data.name}`,
+          subject: `New ${data.type === 'quote' ? 'Quote Request' : 'Contact'} from ${fullName}`,
           html: `
             <h2>New ${data.type === 'quote' ? 'Quote Request' : 'Contact'} Submission</h2>
-            <p><strong>Name:</strong> ${data.name}</p>
+            <p><strong>Name:</strong> ${fullName}</p>
             <p><strong>Email:</strong> ${data.email}</p>
-            <p><strong>Phone:</strong> ${data.phone}</p>
-            <p><strong>Client Type:</strong> ${data.clientType === 'organisatie' ? 'Organization' : 'Private'}</p>
-            ${data.organizationName ? `<p><strong>Organization Name:</strong> ${data.organizationName}</p>` : ''}
-            ${data.projectLocation ? `<p><strong>Project Location:</strong> ${data.projectLocation}</p>` : ''}
-            <p><strong>Project Type:</strong> ${data.projectType}</p>
+            ${data.phone ? `<p><strong>Phone:</strong> ${data.phone}</p>` : ''}
             <p><strong>Message:</strong></p>
             <p>${data.message.replace(/\n/g, '<br>')}</p>
-            ${data.documents && data.documents.length > 0 ? `<p><strong>Documents:</strong> ${data.documents.map((doc: string) => `<a href="${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}${doc}">${doc}</a>`).join(', ')}</p>` : ''}
+            ${data.documents && data.documents.length > 0 ? `<p><strong>Documents:</strong> ${data.documents.map((doc: any) => `<a href="${doc.url || doc}">${doc.filename || doc}</a>`).join(', ')}</p>` : ''}
           `,
         })
       } catch (emailError) {

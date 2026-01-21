@@ -8,18 +8,21 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Poppins', 'sans-serif'],
+      },
       colors: {
         primary: {
-          50: '#e6e6f5',
-          100: '#cccceb',
-          200: '#9999d7',
-          300: '#6666c3',
-          400: '#3333af',
-          500: '#0000A0', // Base navy blue (lighter)
-          600: '#000080', // Medium navy
-          700: '#000068', // Original navy
-          800: '#000052',
-          900: '#00003d', // Darkest navy
+          50: '#e6e6ff',
+          100: '#ccccff',
+          200: '#9999ff',
+          300: '#6666ff',
+          400: '#3333ff',
+          500: '#0000FF',
+          600: '#0000FF',
+          700: '#0000FF',
+          800: '#0000FF',
+          900: '#0000FF',
         },
       },
     },
