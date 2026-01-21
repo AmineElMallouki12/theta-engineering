@@ -41,7 +41,7 @@ export default async function ProjectDetailPage({
         <div className="max-w-4xl mx-auto">
           <div className="border-l-4 border-[#0000FF] pl-6 mb-8">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#0000FF]">{title}</h1>
-            <p className="text-xl text-[#0000FF]">{description}</p>
+            <p className="text-xl text-[#0000FF] text-justify">{description}</p>
           </div>
 
           {project.images && project.images.length > 0 && (
@@ -63,7 +63,7 @@ export default async function ProjectDetailPage({
           {content && (
             <div className="bg-white rounded-lg shadow-lg p-8 border-t-4 border-[#0000FF] mb-8">
               <div className="prose prose-lg max-w-none">
-                <div className="whitespace-pre-wrap text-gray-700">{content}</div>
+                <div className="whitespace-pre-wrap text-gray-700 text-justify">{content}</div>
               </div>
             </div>
           )}

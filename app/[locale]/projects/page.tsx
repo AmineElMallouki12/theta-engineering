@@ -61,7 +61,7 @@ export default async function ProjectsPage({
                     <h3 className="text-xl font-semibold mb-2 text-[#0000FF]">
                       {project.title[locale as 'en' | 'nl']}
                     </h3>
-                    <p className="text-gray-600 mb-4 line-clamp-3">
+                    <p className="text-gray-600 mb-4 line-clamp-3 text-justify">
                       {project.description[locale as 'en' | 'nl']}
                     </p>
                     <Link

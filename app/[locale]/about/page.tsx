@@ -65,25 +65,25 @@ export default async function AboutPage({
               {t('workProcessIntro')}
             </p>
             <div className="space-y-4">
-              <div className="flex items-start gap-4">
-                <span className="bg-[#0000FF] text-white px-4 py-2 rounded-lg font-semibold flex-shrink-0">{t('step1')}</span>
-                <p className="text-gray-700 text-justify">We bespreken uw wensen, uitgangspunten en de scope van het project.</p>
+              <div className="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4">
+                <span className="bg-[#0000FF] text-white px-3 py-2 sm:px-4 rounded-lg font-semibold flex-shrink-0 text-sm sm:text-base w-fit">{t('step1')}</span>
+                <p className="text-gray-700 text-justify flex-1">We bespreken uw wensen, uitgangspunten en de scope van het project.</p>
               </div>
-              <div className="flex items-start gap-4">
-                <span className="bg-[#0000FF] text-white px-4 py-2 rounded-lg font-semibold flex-shrink-0">{t('step2')}</span>
-                <p className="text-gray-700 text-justify">We analyseren de technische randvoorwaarden, risico's en mogelijkheden.</p>
+              <div className="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4">
+                <span className="bg-[#0000FF] text-white px-3 py-2 sm:px-4 rounded-lg font-semibold flex-shrink-0 text-sm sm:text-base w-fit">{t('step2')}</span>
+                <p className="text-gray-700 text-justify flex-1">We analyseren de technische randvoorwaarden, risico's en mogelijkheden.</p>
               </div>
-              <div className="flex items-start gap-4">
-                <span className="bg-[#0000FF] text-white px-4 py-2 rounded-lg font-semibold flex-shrink-0 text-sm">{t('step3')}</span>
-                <p className="text-gray-700 text-justify">We werken het constructief ontwerp uit en geven onderbouwd advies.</p>
+              <div className="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4">
+                <span className="bg-[#0000FF] text-white px-3 py-2 sm:px-4 rounded-lg font-semibold flex-shrink-0 text-sm sm:text-base w-fit">{t('step3')}</span>
+                <p className="text-gray-700 text-justify flex-1">We werken het constructief ontwerp uit en geven onderbouwd advies.</p>
               </div>
-              <div className="flex items-start gap-4">
-                <span className="bg-[#0000FF] text-white px-4 py-2 rounded-lg font-semibold flex-shrink-0">{t('step4')}</span>
-                <p className="text-gray-700 text-justify">We stemmen het ontwerp en de adviezen zorgvuldig met u af.</p>
+              <div className="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4">
+                <span className="bg-[#0000FF] text-white px-3 py-2 sm:px-4 rounded-lg font-semibold flex-shrink-0 text-sm sm:text-base w-fit">{t('step4')}</span>
+                <p className="text-gray-700 text-justify flex-1">We stemmen het ontwerp en de adviezen zorgvuldig met u af.</p>
               </div>
-              <div className="flex items-start gap-4">
-                <span className="bg-[#0000FF] text-white px-4 py-2 rounded-lg font-semibold flex-shrink-0 text-sm">{t('step5')}</span>
-                <p className="text-gray-700 text-justify">We leveren duidelijke documentatie en begeleiden waar nodig de uitvoering.</p>
+              <div className="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4">
+                <span className="bg-[#0000FF] text-white px-3 py-2 sm:px-4 rounded-lg font-semibold flex-shrink-0 text-sm sm:text-base w-fit">{t('step5')}</span>
+                <p className="text-gray-700 text-justify flex-1">We leveren duidelijke documentatie en begeleiden waar nodig de uitvoering.</p>
               </div>
             </div>
           </div>
