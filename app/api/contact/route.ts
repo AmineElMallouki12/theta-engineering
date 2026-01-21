@@ -148,7 +148,29 @@ export async function POST(request: NextRequest) {
     }
 
     const client = await clientPromise
-    const db = client.db()
+    
+    // Extract database name from MONGODB_URI or use default
+    const mongoUri = process.env.MONGODB_URI || ''
+    let dbName = 'theta-engineering' // default
+    
+    // Try to extract database name from URI (after the last / and before ?)
+    if (mongoUri) {
+      try {
+        // For mongodb+srv:// or mongodb:// URIs
+        const uriParts = mongoUri.split('/')
+        if (uriParts.length > 3) {
+          const dbPart = uriParts[uriParts.length - 1].split('?')[0]
+          if (dbPart && dbPart.trim()) {
+            dbName = dbPart.trim()
+          }
+        }
+      } catch (e) {
+        console.warn('Could not extract database name from URI, using default:', e)
+      }
+    }
+    
+    console.log('Using database:', dbName)
+    const db = client.db(dbName)
 
     // Save quote to database
     const quote: Omit<Quote, '_id'> = {
@@ -217,9 +239,18 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: true })
   } catch (error: any) {
     console.error('Error processing contact form:', error)
+    console.error('Error stack:', error?.stack)
+    console.error('Error details:', {
+      message: error?.message,
+      name: error?.name,
+      code: error?.code,
+    })
     const errorMessage = error?.message || 'Internal server error'
     return NextResponse.json(
-      { error: process.env.NODE_ENV === 'development' ? errorMessage : 'Internal server error' },
+      { 
+        error: process.env.NODE_ENV === 'development' ? errorMessage : 'Internal server error',
+        details: process.env.NODE_ENV === 'development' ? error?.stack : undefined
+      },
       { status: 500 }
     )
   }
