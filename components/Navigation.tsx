@@ -25,11 +25,11 @@ export default function Navigation() {
     <nav className="bg-white shadow-md border-b-2 border-[#051A53] sticky top-0 z-50 transition-smooth backdrop-blur-sm bg-white/95">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <Link href={`/${locale}`} className="flex items-center">
+          <Link href={`/${locale}`} className="flex items-center ml-4">
             <img
               src="/logo.png.png"
               alt="Theta Engineering"
-              className="h-10 md:h-12 w-auto object-contain"
+              className="h-12 md:h-14 w-auto object-contain"
             />
           </Link>
 
