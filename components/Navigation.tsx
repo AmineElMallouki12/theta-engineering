@@ -22,10 +22,10 @@ export default function Navigation() {
   ]
 
   return (
-    <nav className="bg-white shadow-md border-b-2 border-[#0000FF] sticky top-0 z-50 transition-smooth backdrop-blur-sm bg-white/95">
+    <nav className="bg-white shadow-md border-b-2 border-[#051A53] sticky top-0 z-50 transition-smooth backdrop-blur-sm bg-white/95">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <Link href={`/${locale}`} className="flex items-center transition-smooth hover:scale-105">
+          <Link href={`/${locale}`} className="flex items-center">
             <img
               src="/logo.png.png"
               alt="Theta Engineering"
@@ -46,11 +46,11 @@ export default function Navigation() {
                   >
                     <Link
                       href={item.href}
-                      className="text-gray-700 hover:text-[#0000FF] transition-smooth relative inline-flex items-center"
+                      className="text-gray-700 hover:text-[#051A53] transition-smooth relative inline-flex items-center"
                     >
                       {item.label}
                       <ChevronDownIcon className="ml-1 h-4 w-4" />
-                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#0000FF] transition-all duration-300 group-hover:w-full"></span>
+                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#051A53] transition-all duration-300 group-hover:w-full"></span>
                     </Link>
                     {expertiseDropdownOpen && (
                       <div 
@@ -58,17 +58,17 @@ export default function Navigation() {
                         onMouseEnter={() => setExpertiseDropdownOpen(true)}
                         onMouseLeave={() => setExpertiseDropdownOpen(false)}
                       >
-                        <div className="bg-white rounded-lg shadow-lg border-2 border-[#0000FF] py-2">
+                        <div className="bg-white rounded-lg shadow-lg border-2 border-[#051A53] py-2">
                           <Link
                             href={`/${locale}/services#constructief-advies`}
-                            className="block px-4 py-2 text-gray-700 hover:bg-[#0000FF] hover:text-white transition-colors"
+                            className="block px-4 py-2 text-gray-700 hover:bg-[#051A53] hover:text-white transition-colors"
                             onClick={() => setExpertiseDropdownOpen(false)}
                           >
                             {t('expertise1')}
                           </Link>
                           <Link
                             href={`/${locale}/services#managementadvies`}
-                            className="block px-4 py-2 text-gray-700 hover:bg-[#0000FF] hover:text-white transition-colors"
+                            className="block px-4 py-2 text-gray-700 hover:bg-[#051A53] hover:text-white transition-colors"
                             onClick={() => setExpertiseDropdownOpen(false)}
                           >
                             {t('expertise2')}
@@ -83,18 +83,18 @@ export default function Navigation() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-gray-700 hover:text-[#0000FF] transition-smooth relative group"
+                  className="text-gray-700 hover:text-[#051A53] transition-smooth relative group"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   {item.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#0000FF] transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#051A53] transition-all duration-300 group-hover:w-full"></span>
                 </Link>
               )
             })}
             <LanguageSwitcher />
             <Link
               href="/admin/login"
-              className="bg-[#0000FF] text-white px-4 py-2 rounded-lg font-medium hover:bg-[#0000FF] transition-smooth hover-lift"
+              className="bg-[#051A53] text-white px-4 py-2 rounded-lg font-medium hover:bg-[#051A53] transition-smooth hover-lift"
             >
               Login
             </Link>
@@ -124,7 +124,7 @@ export default function Navigation() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block py-2 text-gray-700 hover:text-[#0000FF] transition-colors"
+                className="block py-2 text-gray-700 hover:text-[#051A53] transition-colors"
               >
                 {item.label}
               </Link>
@@ -132,7 +132,7 @@ export default function Navigation() {
             <Link
               href="/admin/login"
               onClick={() => setMobileMenuOpen(false)}
-              className="block mt-4 bg-[#0000FF] text-white px-4 py-2 rounded-lg font-medium hover:bg-[#0000FF] transition-colors text-center"
+              className="block mt-4 bg-[#051A53] text-white px-4 py-2 rounded-lg font-medium hover:bg-[#051A53] transition-colors text-center"
             >
               Login
             </Link>

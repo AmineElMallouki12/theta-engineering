@@ -85,17 +85,22 @@
     "workProcessTitle": "Werkwijze",
     "workProcessIntro": "Onze aanpak is helder en efficiënt:",
     "step1": "Intake",
+    "step1Desc": "We bespreken uw wensen, uitgangspunten en de scope van het project.",
     "step2": "Analyse",
+    "step2Desc": "We analyseren de technische randvoorwaarden, risico's en mogelijkheden.",
     "step3": "Ontwerp & berekeningen/Advies",
+    "step3Desc": "We werken het constructief ontwerp uit en geven onderbouwd advies.",
     "step4": "Evaluatie",
+    "step4Desc": "We stemmen het ontwerp en de adviezen zorgvuldig met u af.",
     "step5": "Oplevering & begeleiding",
+    "step5Desc": "We leveren duidelijke documentatie en begeleiden waar nodig de uitvoering.",
     "contactTitle": "Contact",
     "contactText": "Wilt u uw project met ons bespreken? Neem contact op.",
     "contactButton": "Neem Contact Op"
   },
   "services": {
     "title": "Onze Diensten",
-    "subtitle": "Uitgebreide Engineering Oplossingen",
+    "subtitle": "Engineering en management expertise",
     "service": "Dienst",
     "serviceDescription": "Gedetailleerde beschrijving van engineering dienst {item}. Dit gedeelte wordt aangepast met specifieke diensten die door Theta Engineering worden aangeboden.",
     "service1": {
@@ -117,7 +122,8 @@
         "Constructief advies in elke fase van het ontwerp- en bouwproces",
         "Constructieve inspecties van bestaande bouwwerken, inclusief passend advies"
       ],
-      "description": "Wij denken actief mee over technische oplossingen, duurzaamheid, materiaalkeuzes en uitvoerbaarheid. Daarbij zoeken we altijd naar een optimale balans tussen veiligheid, efficiëntie en toekomstbestendigheid. Dankzij onze duidelijke rapportages en concrete aanbevelingen heeft u direct inzicht in de mogelijkheden en de vervolgstappen. Zo helpen wij u uw plannen met vertrouwen en zekerheid te realiseren."
+      "description": "Wij denken actief mee over technische oplossingen, duurzaamheid, materiaalkeuzes en uitvoerbaarheid. Daarbij zoeken we altijd naar een optimale balans tussen veiligheid, efficiëntie en toekomstbestendigheid.",
+      "description2": "Dankzij onze duidelijke rapportages en concrete aanbevelingen heeft u direct inzicht in de mogelijkheden en de vervolgstappen. Zo helpen wij u uw plannen met vertrouwen en zekerheid te realiseren."
     },
     "service2b": {
       "title": "Beoordeling van de constructieve veiligheid",
@@ -145,9 +151,14 @@
     "service3b": {
       "title": "Managementadvies",
       "intro": "Bij (complexe) projecten komt meer kijken dan alleen techniek. Theta Engineering is PMI-gecertificeerd en combineert professioneel project- en procesmanagement met diepgaande technische expertise. Wij coördineren en optimaliseren processen, behouden het overzicht en bewaken kwaliteit, planning en samenwerking. Daarnaast adviseren wij onze klanten om het maximale resultaat uit hun projecten te behalen.",
-      "servicesIntro": "",
-      "services": [],
-      "description": "Ook vervullen wij een belangrijke rol in transitiemanagement. Wij ondersteunen organisaties bij verandering en modernisering van structuren, passend bij de eisen van deze tijd. Dit omvat onder meer de overgang van een verticale naar een meer horizontale organisatiestructuur en het ontwikkelen en implementeren van duurzaamheidsstrategieën binnen bestaande bedrijfsstructuren. Onze projectmanagementdiensten worden ingezet binnen de volgende sectoren: Industrie- en energieprojecten, Woningbouw, Utiliteitsbouw. Met een resultaatgerichte aanpak zorgen wij ervoor dat ieder project soepel verloopt, van het eerste idee tot en met de realisatie."
+      "description": "Ook vervullen wij een belangrijke rol in transitiemanagement. Wij ondersteunen organisaties bij verandering en modernisering van structuren, passend bij de eisen van deze tijd. Dit omvat onder meer de overgang van een verticale naar een meer horizontale organisatiestructuur en het ontwikkelen en implementeren van duurzaamheidsstrategieën binnen bestaande bedrijfsstructuren.",
+      "servicesIntro": "Onze projectmanagementdiensten worden ingezet binnen de volgende sectoren:",
+      "services": [
+        "Industrie- en energieprojecten",
+        "Woningbouw",
+        "Utiliteitsbouw"
+      ],
+      "description2": "Met een resultaatgerichte aanpak zorgen wij ervoor dat ieder project soepel verloopt, van het eerste idee tot en met de realisatie."
     },
     "service4": {
       "title": "Inspectie en constructief advies",

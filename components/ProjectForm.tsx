@@ -142,7 +142,7 @@ export default function ProjectForm({ project, onClose, onSave }: ProjectFormPro
             </label>
             <input
               {...register('title.en')}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0000FF]"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#051A53]"
             />
             {errors.title?.en && (
               <p className="mt-1 text-sm text-red-600">{errors.title.en.message}</p>
@@ -154,7 +154,7 @@ export default function ProjectForm({ project, onClose, onSave }: ProjectFormPro
             </label>
             <input
               {...register('title.nl')}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0000FF]"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#051A53]"
             />
             {errors.title?.nl && (
               <p className="mt-1 text-sm text-red-600">{errors.title.nl.message}</p>
@@ -170,7 +170,7 @@ export default function ProjectForm({ project, onClose, onSave }: ProjectFormPro
             <textarea
               {...register('description.en')}
               rows={4}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0000FF]"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#051A53]"
             />
             {errors.description?.en && (
               <p className="mt-1 text-sm text-red-600">{errors.description.en.message}</p>
@@ -183,7 +183,7 @@ export default function ProjectForm({ project, onClose, onSave }: ProjectFormPro
             <textarea
               {...register('description.nl')}
               rows={4}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0000FF]"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#051A53]"
             />
             {errors.description?.nl && (
               <p className="mt-1 text-sm text-red-600">{errors.description.nl.message}</p>
@@ -199,7 +199,7 @@ export default function ProjectForm({ project, onClose, onSave }: ProjectFormPro
             <textarea
               {...register('content.en')}
               rows={6}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0000FF]"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#051A53]"
             />
           </div>
           <div>
@@ -209,7 +209,7 @@ export default function ProjectForm({ project, onClose, onSave }: ProjectFormPro
             <textarea
               {...register('content.nl')}
               rows={6}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0000FF]"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#051A53]"
             />
           </div>
         </div>
@@ -221,7 +221,7 @@ export default function ProjectForm({ project, onClose, onSave }: ProjectFormPro
             </label>
             <input
               {...register('category')}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0000FF]"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#051A53]"
             />
           </div>
           <div>
@@ -230,7 +230,7 @@ export default function ProjectForm({ project, onClose, onSave }: ProjectFormPro
             </label>
             <input
               {...register('client')}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0000FF]"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#051A53]"
             />
           </div>
           <div>
@@ -240,7 +240,7 @@ export default function ProjectForm({ project, onClose, onSave }: ProjectFormPro
             <input
               {...register('year', { valueAsNumber: true })}
               type="number"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0000FF]"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#051A53]"
             />
           </div>
         </div>
@@ -298,7 +298,7 @@ export default function ProjectForm({ project, onClose, onSave }: ProjectFormPro
           </button>
           <button
             type="submit"
-            className="w-full sm:w-auto px-4 md:px-6 py-2 text-sm md:text-base bg-[#0000FF] text-white rounded-lg hover:bg-[#0000FF]"
+            className="w-full sm:w-auto px-4 md:px-6 py-2 text-sm md:text-base bg-[#051A53] text-white rounded-lg hover:bg-[#051A53]"
           >
             {project ? 'Update Project' : 'Create Project'}
           </button>

@@ -123,12 +123,12 @@ export default function AdminSettingsPage() {
   return (
     <div className="max-w-2xl w-full">
         <div className="mb-6 md:mb-8">
-          <h1 className="text-2xl md:text-3xl font-bold text-[#0000FF] mb-2">{t('settings')}</h1>
-          <div className="w-16 h-1 bg-[#0000FF]"></div>
+          <h1 className="text-2xl md:text-3xl font-bold text-[#051A53] mb-2">{t('settings')}</h1>
+          <div className="w-16 h-1 bg-[#051A53]"></div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md border-t-4 border-[#0000FF] p-4 md:p-8 mb-6">
-          <h2 className="text-lg md:text-xl font-semibold mb-4 md:mb-6 text-[#0000FF]">{t('changeUsername')}</h2>
+        <div className="bg-white rounded-lg shadow-md border-t-4 border-[#051A53] p-4 md:p-8 mb-6">
+          <h2 className="text-lg md:text-xl font-semibold mb-4 md:mb-6 text-[#051A53]">{t('changeUsername')}</h2>
 
           {usernameMessage && (
             <div
@@ -155,7 +155,7 @@ export default function AdminSettingsPage() {
                   {...registerUsername('currentPassword')}
                   type={showUsernamePassword ? 'text' : 'password'}
                   id="currentPasswordUsername"
-                  className="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0000FF] focus:border-transparent"
+                  className="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#051A53] focus:border-transparent"
                 />
                 <button
                   type="button"
@@ -192,7 +192,7 @@ export default function AdminSettingsPage() {
                 {...registerUsername('newUsername')}
                 type="text"
                 id="newUsername"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0000FF] focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#051A53] focus:border-transparent"
               />
               {usernameErrors.newUsername && (
                 <p className="mt-1 text-sm text-red-600">
@@ -204,15 +204,15 @@ export default function AdminSettingsPage() {
             <button
               type="submit"
               disabled={isUsernameLoading}
-              className="w-full bg-[#0000FF] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#0000FF] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-[#051A53] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#051A53] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isUsernameLoading ? t('loading') : t('changeUsername')}
             </button>
           </form>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md border-t-4 border-[#0000FF] p-4 md:p-8">
-          <h2 className="text-lg md:text-xl font-semibold mb-4 md:mb-6 text-[#0000FF]">{t('changePassword')}</h2>
+        <div className="bg-white rounded-lg shadow-md border-t-4 border-[#051A53] p-4 md:p-8">
+          <h2 className="text-lg md:text-xl font-semibold mb-4 md:mb-6 text-[#051A53]">{t('changePassword')}</h2>
 
           {message && (
             <div
@@ -239,7 +239,7 @@ export default function AdminSettingsPage() {
                   {...register('currentPassword')}
                   type={showCurrentPassword ? 'text' : 'password'}
                   id="currentPassword"
-                  className="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0000FF] focus:border-transparent"
+                  className="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#051A53] focus:border-transparent"
                 />
                 <button
                   type="button"
@@ -277,7 +277,7 @@ export default function AdminSettingsPage() {
                   {...register('newPassword')}
                   type={showNewPassword ? 'text' : 'password'}
                   id="newPassword"
-                  className="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0000FF] focus:border-transparent"
+                  className="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#051A53] focus:border-transparent"
                 />
                 <button
                   type="button"
@@ -313,7 +313,7 @@ export default function AdminSettingsPage() {
                   {...register('confirmPassword')}
                   type={showConfirmPassword ? 'text' : 'password'}
                   id="confirmPassword"
-                  className="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0000FF] focus:border-transparent"
+                  className="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#051A53] focus:border-transparent"
                 />
                 <button
                   type="button"
@@ -342,7 +342,7 @@ export default function AdminSettingsPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-[#0000FF] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#0000FF] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-[#051A53] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#051A53] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? t('loading') : t('changePassword')}
             </button>

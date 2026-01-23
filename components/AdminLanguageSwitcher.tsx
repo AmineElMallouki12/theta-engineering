@@ -47,7 +47,7 @@ export default function AdminLanguageSwitcher() {
         onClick={() => switchLanguage('nl')}
         className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
           currentLang === 'nl'
-            ? 'bg-[#0000FF] text-white'
+            ? 'bg-[#051A53] text-white'
             : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
         }`}
       >
@@ -57,7 +57,7 @@ export default function AdminLanguageSwitcher() {
         onClick={() => switchLanguage('en')}
         className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
           currentLang === 'en'
-            ? 'bg-[#0000FF] text-white'
+            ? 'bg-[#051A53] text-white'
             : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
         }`}
       >

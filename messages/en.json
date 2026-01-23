@@ -89,17 +89,22 @@
     "workProcessTitle": "Work Process",
     "workProcessIntro": "Our approach is clear and efficient:",
     "step1": "Intake",
+    "step1Desc": "We discuss your wishes, starting points and the scope of the project.",
     "step2": "Analysis",
+    "step2Desc": "We analyze the technical requirements, risks and possibilities.",
     "step3": "Design & calculations/Advice",
+    "step3Desc": "We work out the structural design and provide substantiated advice.",
     "step4": "Evaluation",
+    "step4Desc": "We carefully align the design and advice with you.",
     "step5": "Delivery & guidance",
+    "step5Desc": "We deliver clear documentation and guide the execution where necessary.",
     "contactTitle": "Contact",
     "contactText": "Would you like to discuss your project with us? Get in touch.",
     "contactButton": "Get in Touch"
   },
   "services": {
     "title": "Our Services",
-    "subtitle": "Comprehensive Engineering Solutions",
+    "subtitle": "Engineering and management expertise",
     "service": "Service",
     "serviceDescription": "Detailed description of engineering service {item}. This section will be customized with specific services provided by Theta Engineering.",
     "service1": {
@@ -121,7 +126,8 @@
         "Structural advice in every phase of the design and construction process",
         "Structural inspections of existing buildings, including appropriate advice"
       ],
-      "description": "We actively think along about technical solutions, sustainability, material choices and feasibility. We always seek an optimal balance between safety, efficiency and future-proofness. Thanks to our clear reports and concrete recommendations, you have immediate insight into the possibilities and next steps. This is how we help you realize your plans with confidence and certainty."
+      "description": "We actively think along about technical solutions, sustainability, material choices and feasibility. We always seek an optimal balance between safety, efficiency and future-proofness.",
+      "description2": "Thanks to our clear reports and concrete recommendations, you have immediate insight into the possibilities and next steps. This is how we help you realize your plans with confidence and certainty."
     },
     "service2b": {
       "title": "Assessment of structural safety",
@@ -149,9 +155,14 @@
     "service3b": {
       "title": "Management advice",
       "intro": "Complex projects involve more than just technology. Theta Engineering is PMI-certified and combines professional project and process management with in-depth technical expertise. We coordinate and optimize processes, maintain overview and monitor quality, planning and collaboration. In addition, we advise our clients to get the maximum result from their projects.",
-      "servicesIntro": "",
-      "services": [],
-      "description": "We also play an important role in transition management. We support organizations in change and modernization of structures, appropriate to the requirements of this time. This includes, among other things, the transition from a vertical to a more horizontal organizational structure and the development and implementation of sustainability strategies within existing business structures. Our project management services are deployed within the following sectors: Industrial and energy projects, Residential construction, Utility construction. With a results-oriented approach, we ensure that every project runs smoothly, from the first idea to realization."
+      "description": "We also play an important role in transition management. We support organizations in change and modernization of structures, appropriate to the requirements of this time. This includes, among other things, the transition from a vertical to a more horizontal organizational structure and the development and implementation of sustainability strategies within existing business structures.",
+      "servicesIntro": "Our project management services are deployed within the following sectors:",
+      "services": [
+        "Industrial and energy projects",
+        "Residential construction",
+        "Utility construction"
+      ],
+      "description2": "With a results-oriented approach, we ensure that every project runs smoothly, from the first idea to realization."
     },
     "service4": {
       "title": "Inspection and structural advice",

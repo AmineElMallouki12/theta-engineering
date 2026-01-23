@@ -237,7 +237,7 @@ export default function ContactForm({ type = 'contact', locale }: ContactFormPro
             {...register('firstName')}
             type="text"
             id="firstName"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0000FF] focus:border-transparent"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#051A53] focus:border-transparent"
           />
           {errors.firstName && (
             <p className="mt-1 text-sm text-red-600">{errors.firstName.message}</p>
@@ -253,7 +253,7 @@ export default function ContactForm({ type = 'contact', locale }: ContactFormPro
             {...register('lastName')}
             type="text"
             id="lastName"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0000FF] focus:border-transparent"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#051A53] focus:border-transparent"
           />
           {errors.lastName && (
             <p className="mt-1 text-sm text-red-600">{errors.lastName.message}</p>
@@ -272,7 +272,7 @@ export default function ContactForm({ type = 'contact', locale }: ContactFormPro
             {...register('email')}
             type="email"
             id="email"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0000FF] focus:border-transparent"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#051A53] focus:border-transparent"
           />
           {errors.email && (
             <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
@@ -288,7 +288,7 @@ export default function ContactForm({ type = 'contact', locale }: ContactFormPro
             {...register('phone')}
             type="tel"
             id="phone"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0000FF] focus:border-transparent"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#051A53] focus:border-transparent"
           />
           {errors.phone && (
             <p className="mt-1 text-sm text-red-600">{errors.phone.message}</p>
@@ -305,7 +305,7 @@ export default function ContactForm({ type = 'contact', locale }: ContactFormPro
           {...register('message')}
           id="message"
           rows={6}
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0000FF] focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#051A53] focus:border-transparent"
         />
         {errors.message && (
           <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
@@ -323,7 +323,7 @@ export default function ContactForm({ type = 'contact', locale }: ContactFormPro
           multiple
           accept=".pdf,.dwg,.jpg,.jpeg,.png,.doc,.docx"
           onChange={handleFileChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0000FF] focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#051A53] focus:border-transparent"
         />
         <p className="mt-1 text-sm text-gray-500">{t('uploadDocumentsHint')}</p>
         
@@ -351,7 +351,7 @@ export default function ContactForm({ type = 'contact', locale }: ContactFormPro
           <input
             {...register('privacyAccepted')}
             type="checkbox"
-            className="mt-1 mr-2 h-4 w-4 text-[#0000FF] focus:ring-[#0000FF] border-gray-300 rounded"
+            className="mt-1 mr-2 h-4 w-4 text-[#051A53] focus:ring-[#051A53] border-gray-300 rounded"
           />
           <span className="text-sm text-gray-700">
             {t('privacyAccept')}
@@ -400,7 +400,7 @@ export default function ContactForm({ type = 'contact', locale }: ContactFormPro
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-[#0000FF] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#0000FF] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full bg-[#051A53] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#051A53] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isSubmitting ? t('sending') : t('send')}
       </button>

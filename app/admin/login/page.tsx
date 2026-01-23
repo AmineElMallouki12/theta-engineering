@@ -124,7 +124,7 @@ export default function AdminLoginPage() {
 
   if (checkingAuth) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0000FF] to-[#0000FF]">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#051A53] to-[#051A53]">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto"></div>
           <p className="mt-4 text-white">{t('checkingAuth')}</p>
@@ -134,11 +134,11 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0000FF] to-[#0000FF] px-4">
-      <div className="max-w-md w-full bg-white rounded-lg shadow-xl border-t-4 border-[#0000FF] p-6 md:p-8">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#051A53] to-[#051A53] px-4">
+      <div className="max-w-md w-full bg-white rounded-lg shadow-xl border-t-4 border-[#051A53] p-6 md:p-8">
         <Link
           href="/nl"
-          className="inline-flex items-center text-[#0000FF] hover:text-[#0000FF] mb-6 transition-colors font-medium"
+          className="inline-flex items-center text-[#051A53] hover:text-[#051A53] mb-6 transition-colors font-medium"
         >
           <svg
             className="w-5 h-5 mr-2"
@@ -156,10 +156,10 @@ export default function AdminLoginPage() {
           <span className="text-sm font-medium">{t('backToHome')}</span>
         </Link>
         <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-2 text-[#0000FF]">
+          <h1 className="text-3xl md:text-4xl font-bold mb-2 text-[#051A53]">
             {t('adminLogin')}
           </h1>
-          <div className="w-16 h-1 bg-[#0000FF] mx-auto"></div>
+          <div className="w-16 h-1 bg-[#051A53] mx-auto"></div>
         </div>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div>
@@ -171,7 +171,7 @@ export default function AdminLoginPage() {
               type="text"
               id="username"
               autoComplete="username"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0000FF] focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#051A53] focus:border-transparent"
             />
             {errors.username && (
               <p className="mt-1 text-sm text-red-600">{errors.username.message}</p>
@@ -187,7 +187,7 @@ export default function AdminLoginPage() {
                 {...register('password')}
                 type={showPassword ? 'text' : 'password'}
                 id="password"
-                className="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0000FF] focus:border-transparent"
+                className="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#051A53] focus:border-transparent"
               />
               <button
                 type="button"
@@ -246,7 +246,7 @@ export default function AdminLoginPage() {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-[#0000FF] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#0000FF] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-[#051A53] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#051A53] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? t('loggingIn') : t('login')}
           </button>

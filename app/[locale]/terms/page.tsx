@@ -9,35 +9,35 @@ export default async function TermsPage({
     <div className="bg-gradient-to-b from-white to-primary-50">
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
-          <div className="border-l-4 border-[#0000FF] pl-6 mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#0000FF]">Terms of Service</h1>
+          <div className="border-l-4 border-[#051A53] pl-6 mb-8">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#051A53]">Terms of Service</h1>
           </div>
           
-          <div className="bg-white rounded-lg shadow-lg p-8 border-t-4 border-[#0000FF] prose prose-lg max-w-none">
+          <div className="bg-white rounded-lg shadow-lg p-8 border-t-4 border-[#051A53] prose prose-lg max-w-none">
         
             <section className="mb-8">
-              <h2 className="text-2xl font-semibold mb-4 text-[#0000FF]">1. Acceptance of Terms</h2>
-              <p className="text-gray-700">
+              <h2 className="text-2xl font-semibold mb-4 text-[#051A53]">1. Acceptance of Terms</h2>
+              <p className="text-[16px] text-gray-700">
                 By accessing and using the Theta Engineering website, you accept and agree to 
                 be bound by the terms and provision of this agreement.
               </p>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-semibold mb-4 text-[#0000FF]">2. Use License</h2>
-              <p className="text-gray-700 mb-4">
+              <h2 className="text-2xl font-semibold mb-4 text-[#051A53]">2. Use License</h2>
+              <p className="text-[16px] text-gray-700 mb-4">
                 Permission is granted to temporarily access the materials on Theta Engineering's 
                 website for personal, non-commercial transitory viewing only.
               </p>
-              <p className="text-gray-700">
+              <p className="text-[16px] text-gray-700">
                 This license shall automatically terminate if you violate any of these restrictions 
                 and may be terminated by Theta Engineering at any time.
               </p>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-semibold mb-4 text-[#0000FF]">3. Disclaimer</h2>
-              <p className="text-gray-700">
+              <h2 className="text-2xl font-semibold mb-4 text-[#051A53]">3. Disclaimer</h2>
+              <p className="text-[16px] text-gray-700">
                 The materials on Theta Engineering's website are provided on an 'as is' basis. 
                 Theta Engineering makes no warranties, expressed or implied, and hereby disclaims 
                 and negates all other warranties including, without limitation, implied warranties 
@@ -47,7 +47,7 @@ export default async function TermsPage({
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-semibold mb-4 text-[#0000FF]">4. Limitations</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-[#051A53]">4. Limitations</h2>
               <p className="text-gray-700">
                 In no event shall Theta Engineering or its suppliers be liable for any damages 
                 (including, without limitation, damages for loss of data or profit, or due to 
@@ -57,8 +57,8 @@ export default async function TermsPage({
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-semibold mb-4 text-[#0000FF]">5. Revisions</h2>
-              <p className="text-gray-700">
+              <h2 className="text-2xl font-semibold mb-4 text-[#051A53]">5. Revisions</h2>
+              <p className="text-[16px] text-gray-700">
                 Theta Engineering may revise these terms of service at any time without notice. 
                 By using this website you are agreeing to be bound by the then current version 
                 of these terms of service.

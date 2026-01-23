@@ -227,7 +227,7 @@ a {
   transform: translateX(-50%);
   width: 0;
   height: 0.5px;
-  background: linear-gradient(90deg, transparent, rgb(0, 0, 255), transparent);
+  background: linear-gradient(90deg, transparent, rgb(5, 26, 83), transparent);
   animation: lineExpand 1s ease-out forwards;
 }
 
@@ -238,5 +238,56 @@ a {
 .animate-line-expand.border-b::before {
   top: auto;
   bottom: 0;
+}
+
+/* Hero Section Responsive Background - No borders */
+.hero-bg-no-borders {
+  background-size: cover;
+}
+
+/* Custom square bullets for Constructief advies */
+.square-bullets {
+  list-style: none;
+  padding-left: 0;
+}
+
+.square-bullets li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0;
+}
+
+.square-bullets li p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.square-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 0.35rem;
+  height: 0.35rem;
+  background-color: #051A53;
+  display: block;
+}
+
+/* Better text justification for mobile - reduces awkward spacing */
+@media (max-width: 768px) {
+  /* Reduce font size slightly on mobile for justified text to reduce word spacing */
+  p.text-justify,
+  div.text-justify,
+  [class*="text-justify"] {
+    text-align: justify;
+    text-align-last: left;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    word-spacing: 0.05em;
+    letter-spacing: 0.01em;
+    font-size: 15px !important;
+  }
 }
 

@@ -56,7 +56,7 @@ export default function AdminDashboard() {
   if (loading) {
     return (
       <div className="text-center py-12">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0000FF] mx-auto"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#051A53] mx-auto"></div>
       </div>
     )
   }
@@ -64,14 +64,14 @@ export default function AdminDashboard() {
   return (
     <div>
         <div className="mb-6 md:mb-8">
-          <h1 className="text-2xl md:text-3xl font-bold text-[#0000FF] mb-2">{t('dashboard')}</h1>
-          <div className="w-16 h-1 bg-[#0000FF]"></div>
+          <h1 className="text-2xl md:text-3xl font-bold text-[#051A53] mb-2">{t('dashboard')}</h1>
+          <div className="w-16 h-1 bg-[#051A53]"></div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-6 md:mb-8">
-          <div className="bg-white p-6 rounded-lg shadow-md border-t-4 border-[#0000FF] hover:shadow-lg transition-shadow">
+          <div className="bg-white p-6 rounded-lg shadow-md border-t-4 border-[#051A53] hover:shadow-lg transition-shadow">
             <h3 className="text-sm font-medium text-gray-500 mb-2">{t('totalQuotes')}</h3>
-            <p className="text-3xl font-bold text-[#0000FF]">{stats.totalQuotes}</p>
+            <p className="text-3xl font-bold text-[#051A53]">{stats.totalQuotes}</p>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-md border-t-4 border-red-500 hover:shadow-lg transition-shadow">
             <h3 className="text-sm font-medium text-gray-500 mb-2">{t('newQuotes')}</h3>
@@ -87,13 +87,13 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md border-t-4 border-[#0000FF]">
-          <div className="p-4 md:p-6 border-b border-[#0000FF]">
+        <div className="bg-white rounded-lg shadow-md border-t-4 border-[#051A53]">
+          <div className="p-4 md:p-6 border-b border-[#051A53]">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-              <h2 className="text-lg md:text-xl font-semibold text-[#0000FF]">{t('recentQuotes')}</h2>
+              <h2 className="text-lg md:text-xl font-semibold text-[#051A53]">{t('recentQuotes')}</h2>
               <Link
                 href="/admin/quotes"
-                className="text-[#0000FF] hover:text-[#0000FF] font-medium text-sm md:text-base transition-colors"
+                className="text-[#051A53] hover:text-[#051A53] font-medium text-sm md:text-base transition-colors"
               >
                 {t('viewAll')} →
               </Link>
@@ -118,7 +118,7 @@ export default function AdminDashboard() {
                         quote.status === 'new'
                           ? 'bg-red-100 text-red-800'
                           : quote.status === 'read'
-                          ? 'bg-[#ccccff] text-[#0000FF]'
+                          ? 'bg-primary-100 text-[#051A53]'
                           : 'bg-gray-100 text-gray-800'
                       }`}
                     >
