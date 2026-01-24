@@ -28,7 +28,6 @@ export default async function HomePage({
                 className="bg-white text-[#051A53] px-10 py-4 rounded-lg font-semibold hover:bg-gray-50 transition-colors inline-flex items-center justify-center text-base"
               >
                 {t('cta')}
-                <span className="ml-2">→</span>
               </Link>
             </div>
           </div>

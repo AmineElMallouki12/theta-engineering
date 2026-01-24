@@ -24,12 +24,13 @@ export default function Navigation() {
   return (
     <nav className="bg-white shadow-md border-b-2 border-[#051A53] sticky top-0 z-50 transition-smooth backdrop-blur-sm bg-white/95">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
-          <Link href={`/${locale}`} className="flex items-center ml-4">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex items-center h-16 justify-between">
+          <Link href={`/${locale}`} className="flex items-center ml-4 md:ml-6">
             <img
               src="/logo.png.png"
               alt="Theta Engineering"
-              className="h-12 md:h-14 w-auto object-contain"
+              className="h-14 md:h-16 w-auto object-contain"
             />
           </Link>
 
@@ -138,6 +139,7 @@ export default function Navigation() {
             </Link>
           </div>
         )}
+        </div>
       </div>
     </nav>
   )

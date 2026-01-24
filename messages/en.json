@@ -235,7 +235,20 @@
     "services": "Services",
     "projects": "Projects",
     "getInTouch": "Get in Touch",
-    "allRightsReserved": "All rights reserved."
+    "allRightsReserved": "All rights reserved.",
+    "servicesTitle": "Services",
+    "service1": "Project management",
+    "service2": "Architecture",
+    "service3": "Building advice",
+    "service4": "Structural advice",
+    "service5": "Building physics",
+    "navigationTitle": "Navigation",
+    "nav1": "The concept",
+    "nav2": "Business",
+    "nav3": "Private",
+    "nav4": "About us",
+    "nav5": "Projects",
+    "practicalTitle": "Practical"
   },
   "admin": {
     "login": "Login",

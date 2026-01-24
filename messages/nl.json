@@ -231,7 +231,20 @@
     "services": "Diensten",
     "projects": "Projecten",
     "getInTouch": "Neem Contact Op",
-    "allRightsReserved": "Alle rechten voorbehouden."
+    "allRightsReserved": "Alle rechten voorbehouden.",
+    "servicesTitle": "Diensten",
+    "service1": "Projectmanagement",
+    "service2": "Architectuur",
+    "service3": "Bouwkundig advies",
+    "service4": "Constructief advies",
+    "service5": "Bouwfysica",
+    "navigationTitle": "Navigatie",
+    "nav1": "Het concept",
+    "nav2": "Zakelijk",
+    "nav3": "Particulier",
+    "nav4": "Over ons",
+    "nav5": "Projecten",
+    "practicalTitle": "Praktisch"
   },
   "admin": {
     "login": "Inloggen",

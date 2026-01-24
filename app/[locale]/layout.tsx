@@ -6,6 +6,7 @@ import { locales } from '@/i18n'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import CookieConsent from '@/components/CookieConsent'
+import PageTransition from '@/components/PageTransition'
 import type { Metadata } from 'next'
 
 export function generateMetadata({ params: { locale } }: { params: { locale: string } }): Metadata {
@@ -47,7 +48,9 @@ export default async function LocaleLayout({
     <NextIntlClientProvider messages={messages}>
       <div className="min-h-screen flex flex-col">
         <Navigation />
-        <main className="flex-grow">{children}</main>
+        <main className="flex-grow">
+          <PageTransition>{children}</PageTransition>
+        </main>
         <Footer />
         <CookieConsent />
       </div>

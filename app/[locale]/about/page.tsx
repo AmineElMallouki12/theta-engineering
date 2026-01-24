@@ -11,9 +11,9 @@ export default async function AboutPage({
   return (
     <div className="bg-gradient-to-b from-white to-primary-50">
       <div className="container mx-auto px-4 py-16">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#051A53]">{t('title')}</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#051A53]">{t('tagline')}</h1>
             <div className="w-24 h-1 bg-[#051A53] mx-auto mb-6"></div>
           </div>
 
@@ -21,9 +21,6 @@ export default async function AboutPage({
           <div className="bg-white rounded-lg shadow-lg p-6 md:p-8 mb-8 border-t-4 border-[#051A53]">
             <p className="text-[16px] text-gray-700 leading-relaxed mb-6 text-justify">
               {t('intro')}
-            </p>
-            <p className="text-2xl md:text-3xl font-bold text-[#051A53] text-center italic">
-              {t('tagline')}
             </p>
           </div>
 
@@ -49,7 +46,7 @@ export default async function AboutPage({
             <p className="text-[16px] text-gray-700 leading-relaxed mb-4 text-justify">
               {t('expertiseIntro')}
             </p>
-            <ul className="list-disc list-inside space-y-2 text-[16px] text-gray-700 mb-4">
+            <ul className="square-bullets text-[16px] text-gray-700 space-y-2 mb-4">
               <li>{t('expertise1')}</li>
               <li>{t('expertise2')}</li>
             </ul>
